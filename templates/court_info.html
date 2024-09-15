@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+{% block title %} Home Page {% endblock %}
+
+{% block content %}
+
+    <div class="courts_info">
+        {% for court in court_info %}
+        <div>
+            <h2>{{court['court_number']}}</h2>
+            <div class="details">
+                <p>Date: {{court['available_date']}}</p>
+                <p>Available Time: 
+                {% for time in court['available_time'] %}
+                    <span>{{time}}</span>
+                {% endfor %}
+                </p>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+
+{% endblock %}
