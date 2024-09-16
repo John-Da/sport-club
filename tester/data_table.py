@@ -1,5 +1,5 @@
 import sqlite3 as sql
-from members import members_list
+from tester.members import members_list
 
 DATABASE = "databases/petanque.db"
 

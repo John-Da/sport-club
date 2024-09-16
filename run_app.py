@@ -2,7 +2,7 @@ from flask import *
 from models import *
 
 
-from court_info import COURT_INFO
+from tester.court_info import COURT_INFO
 from datetime import *
 
 app = Flask(__name__)
