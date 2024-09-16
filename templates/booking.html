@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+{% block title %}Booking - Court{% endblock %}
+
+{% block content %}
+    <form action="/add_booking" method="POST">
+        <div class="coutinfo">
+            <label for="courtName">Court Name:</label>
+            <input type="text" id="courtName" name="courtName" required>
+        </div>
+        <div class="customerInfo">
+            <label for="customerName">Customer Name:</label>
+            <input type="text" id="customerName" name="customerName" required>
+        </div>
+        <button type="submit">Submit</button>
+    </form>
+{% endblock %}
