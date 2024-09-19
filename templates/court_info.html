@@ -1,59 +1,12 @@
-
-<div class="courts_info">
+<div class="courts_info" id="courts_info">
     {% for court in court_info %}
     <div class="bookingcard">
-        <h2>{{ court.court_number }}</h2>
+        <h2>Court Number: {{ court.courtName }}</h2>
         <div class="details">
-            <p>Date: {{ court.available_date }}</p>
-            <p>Available Time: 
-            {% for time in court.available_time %}
-                <span>{{ time }}</span>
-            {% endfor %}
-            </p>
-            <span class="price">Price: {{ court.price }} Baht</span>
+            <p>Available Time: {{ court.courtTime }}</p>
+            <p>Price: <span class="price">{{ court.courtPrice }} Baht</span></p>
         </div>
+        <a href="#"><i class="fa-solid fa-trash-can"></i></a>
     </div>
     {% endfor %}
 </div>
-
-
-<!-- 
-<div class="cardContainer">
-    <div class="bookingcard">
-        <h1 class="courtname">Court A</h1>
-        <p>Available Time: <span class="time">10:00 - 11:00</span></p>
-        <span class="price">Price: 56 Baht</span>
-    </div>
-    <div class="bookingcard">
-        <h1 class="courtname">Court B</h1>
-        <p>Available Time: <span class="time">10:00 - 11:00</span></p>
-        <span class="price">Price: 56 Baht</span>
-    </div>
-    <div class="bookingcard">
-        <h1 class="courtname">Court C</h1>
-        <p>Available Time: <span class="time">10:00 - 11:00</span></p>
-        <span class="price">Price: 56 Baht</span>
-    </div>
-</div>
-
-<style>
-    .cardContainer .bookingcard{
-        border: none;
-        box-shadow: 0 4px 10px rgba(0,0,0, 0.2);
-
-        width: 340px;
-        height: 100px;
-        padding: 10px 14px;
-        margin: 3px;
-
-        border-radius: 12px;
-    }
-    .cardContainer .bookingcard h1{
-        margin-bottom: 15px;
-    }
-    .cardContainer{
-        display: grid;
-        grid-template-rows: 1fr 1fr;
-        gap: 0.6rem;
-    }
-</style>-->

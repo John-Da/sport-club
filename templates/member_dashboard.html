@@ -1,19 +1,15 @@
 {% extends "base.html" %}
 
 {% block title %}
-    User - DashBoard
+    User - Dashboard
 {% endblock %}
 
 {% block content %}
-
-    
-
-    <h1>Hello World</h1>
-    <div class="container">
-        {% include 'court_info.html' %}
+    <div class="courtBoard">
+        <h1 style="text-align: center;">Welcome to the Court Booking System</h1>
+        <h2>Booked Courts</h2>
+        <div>
+            {% include 'court_info.html' %}
+        </div>
     </div>
-
-
-
-
 {% endblock %}

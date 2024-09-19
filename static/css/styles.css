@@ -3,7 +3,7 @@
 
 
 
-.court_info .bookingcard{
+#court_info .bookingcard{
     border: none;
     box-shadow: 0 4px 10px rgba(0,0,0, 0.2);
 
@@ -14,10 +14,10 @@
 
     border-radius: 12px;
 }
-.court_info .bookingcard h1{
+#court_info .bookingcard h1{
     margin-bottom: 15px;
 }
-.court_info{
+#court_info{
     display: grid;
     grid-template-rows: 1fr 1fr;
     gap: 0.6rem;

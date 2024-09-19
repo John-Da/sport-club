@@ -1,61 +1,43 @@
 from flask import request, redirect, url_for, flash, render_template
 from run_app import app, db
-from models import *
+from models import Courts, Customers, Booking
+
+
+# ---------- User Views ------
 
 @app.route('/')
-@app.route('/memberdashboard')
-def home():
+@app.route('/userdashboard')
+def userhome():
+    court_info = Courts.query.all()
 
-    courts = Courts.query.all()
-    
-    court_info = []
-    for court in courts:
-        court_info.append({
-            'court_number': court.courtName,  
-            'available_date': '2024-09-16',  
-            'available_time': ['10:00 AM', '11:00 AM', '12:00 PM'],
-            'price' : '56'
-        })
-    
     return render_template('member_dashboard.html', court_info=court_info)
 
 
-@app.route('/add_court', methods=['POST'])
-def add_court():
-    court_name = request.form.get('courtName')
-    if court_name:
-        try:
-            new_court = Courts(courtName=court_name)
-            db.session.add(new_court)
-            db.session.commit()
-            flash("Court added successfully!")
-        except Exception as e:
-            db.session.rollback()
-            flash(f"Error adding court: {str(e)}")
-    return redirect(url_for('show_form'))
+# ------------- Adding Court ---------
+@app.route('/booking', methods=['GET','POST'])
+def booking():
+    if request.method == 'POST':
+        court_name = request.form.get('courtName')
+        court_time = request.form.get('courtTime')
+        court_price = request.form.get('courtPrice')
 
-@app.route('/add_booking', methods=['POST'])
-def add_booking():
-    court_name = request.form.get('courtName')
-    customer_name = request.form.get('customerName')
-    if court_name and customer_name:
-        new_info = Booking()
+        if court_name and court_time and court_price:
+            try:
+                new_court = Courts(courtName=court_name, courtTime=court_time, courtPrice=court_price)
+                db.session.add(new_court)
+                db.session.commit()
 
-@app.route('/add_customer', methods=['POST'])
-def add_customer():
-    customer_name = request.form.get('customerName')
-    if customer_name:
-        try:
-            new_customer = Coustomers(coustomerName=customer_name)
-            db.session.add(new_customer)
-            db.session.commit()
-            flash("Customer added successfully!")
-        except Exception as e:
-            db.session.rollback()
-            flash(f"Error adding customer: {str(e)}")
-    return redirect(url_for('show_form'))
+                flash("Booked successfully!")
+            except Exception as e:
+                db.session.rollback()
+                flash(f"Error adding court: {str(e)}")
+        
+        else:
+            flash("All fields are required.")
 
-@app.route('/booking')
-def show_form():
-    return render_template('booking.html')
+        return redirect(url_for('booking'))
+    return render_template('addCourt.html')
+
+
+
 
