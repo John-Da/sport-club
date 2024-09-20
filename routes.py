@@ -41,5 +41,19 @@ def booking():
 
 
 # -------------- Delete Cart ------------
+@app.route('/delete_court/<int:court_id>', methods=['POST'])
+def delete_court(court_id):
+    try:
+        court_to_delete = Courts.query.get(court_id)
+        if court_to_delete:
+            db.session.delete(court_to_delete)
+            db.session.commit()
+            flash('Court deleted successfully!')
+        else:
+            flash('Court not found.')
+    except Exception as e:
+        db.session.rollback()
+        flash(f"Error deleting court: {str(e)}")
 
+    return redirect(url_for('userhome'))
 

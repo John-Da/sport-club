@@ -5,10 +5,15 @@
 {% endblock %}
 
 {% block content %}
-    <div class="courtBoard">
-        <h1 style="text-align: center;">Welcome to the Court Booking System</h1>
-        <h2>Booked Courts</h2>
-        <div>
+    <div class="courtBoard" id="courtBoard">
+        <div class="dash-title">
+            <h1 class="tag-name">Dash Board</h1>
+        </div>
+        <div class="card-container">
+            <div class="see-booked-list">
+                <h2 class="booked-list">Booked Courts</h2>
+                <a href="#">See More</a>
+            </div>
             {% include 'court_info.html' %}
         </div>
     </div>
