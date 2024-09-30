@@ -9,15 +9,9 @@ app.config["SQLALCHEMY_TRACK_MODIFICATIONS"] = False  # The key should be plural
 db = SQLAlchemy(app)
 
 
-
-
-
 if __name__ == "__main__":
     from routes import *  # Import routes after app is initialized
     from dbtable import create_db
+
     create_db()
     app.run(debug=True)
-
-
-
-
