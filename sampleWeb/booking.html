@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+
+    <link rel="stylesheet" href="booking.css">
+
+    <title>Petanque Court Booking</title>
+    
+</head>
+<body>
+    <div class="container">
+        <h1>Petanque Court Booking</h1>
+        <div id="calendar"></div>
+        <div id="availableTimes"></div>
+        <div id="bookingForm" class="hidden">
+            <h2>Booking Details</h2>
+            <form id="bookingDetails">
+                <label for="username">Name:</label>
+                <input type="text" id="username" placeholder="Name" required>
+                
+                <label for="courtName">Court:</label>
+                <input type="text" id="courtName" readonly>
+                
+                <label for="bookingDate">Date:</label>
+                <input type="text" id="bookingDate" readonly>
+                
+                <label for="bookingTime">Time:</label>
+                <input type="text" id="bookingTime" readonly>
+                
+                <label for="price">Price:</label>
+                <input type="text" id="price" readonly>
+                
+                <label for="paymentMethod">Payment Method:</label>
+                <select id="paymentMethod" required>
+                    <option value="credit">Credit Card</option>
+                    <option value="debit">Debit Card</option>
+                    <option value="paypal">PayPal</option>
+                </select>
+                
+                <div class="button-group">
+                    <button type="submit" id="confirmButton">Confirm Booking</button>
+                    <button type="button" id="cancelButton">Cancel</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <script src="booking.js"></script>
+</body>
+</html>
