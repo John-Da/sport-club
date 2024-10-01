@@ -19,7 +19,14 @@ document.addEventListener('DOMContentLoaded', () => {
     const rules = [
         "Bookings are limited to 1 hour per session.",
         "Please arrive 5 minutes before your booking time.",
+        "Please arrive 5 minutes before your booking time.",
+        "Please arrive 5 minutes before your booking time.",
         "Cancellations must be made at least 2 hours in advance.",
+        "Proper petanque equipment is required.",
+        "Proper petanque equipment is required.",
+        "Proper petanque equipment is required.",
+        "Proper petanque equipment is required.",
+        "Proper petanque equipment is required.",
         "Proper petanque equipment is required.",
         "Please be respectful of other players and staff."
     ];

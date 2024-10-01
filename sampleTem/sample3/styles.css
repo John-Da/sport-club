@@ -45,7 +45,7 @@ h1 {
     padding: 20px 0;
     text-align: center;
     text-decoration: none;
-    font-size: 18px;
+    font-size: 16px;
     cursor: pointer;
     transition: background-color 0.3s, transform 0.2s;
     border-radius: 8px;
@@ -59,16 +59,15 @@ h1 {
 
 .rules {
     background-color: #fff;
-    padding: 20px;
-    border-radius: 8px;
-    margin-bottom: 60px;
+    padding: 15px;
+    border-radius: 5px;
+    margin-bottom: 20px;
     box-shadow: 0 2px 4px rgba(0,0,0,0.1);
 }
 
 .rules h2 {
     margin-top: 0;
     color: #2c3e50;
-    font-size: 22px;
 }
 
 #rulesList {
@@ -78,7 +77,6 @@ h1 {
 
 #rulesList li {
     margin-bottom: 10px;
-    line-height: 1.5;
 }
 
 nav {
