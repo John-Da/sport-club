@@ -1,0 +1,359 @@
+:root {
+    --primary-color: #3498db;
+    --secondary-color: #2ecc71;
+    --background-color: #f4f4f4;
+    --text-color: #333;
+    --light-text-color: #7f8c8d;
+    --border-color: #e0e0e0;
+    --shadow-color: rgba(0, 0, 0, 0.1);
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: 'Roboto', sans-serif;
+    background-color: var(--background-color);
+    color: var(--text-color);
+    line-height: 1.6;
+    padding-bottom: 60px; /* Add padding to account for the bottom nav */
+}
+
+.booking-header {
+    background-color: var(--primary-color);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem;
+    position: relative; /* Changed from sticky to allow scrolling out */
+    top: 0;
+    z-index: 10;
+}
+
+.back-btn {
+    background: none;
+    border: none;
+    color: white;
+    font-size: 1.5rem;
+    cursor: pointer;
+}
+
+.search-bar {
+    flex-grow: 1;
+    margin-left: 1rem;
+    padding: 0.5rem;
+    border: none;
+    border-radius: 4px;
+    font-size: 1rem;
+}
+
+.booking-content {
+    padding: 1rem;
+}
+
+.booking-calendar-container,
+.booking-available-times {
+    background-color: white;
+    border-radius: 8px;
+    padding: 1rem;
+    margin-bottom: 1rem;
+    box-shadow: 0 2px 4px var(--shadow-color);
+}
+
+.booking-available-times {
+    position: relative; /* Add this to contain the absolute positioned title */
+    padding-top: 3rem; /* Add padding to account for the sticky title */
+}
+
+.available-times-title {
+    position: sticky;
+    top: 0;
+    background-color: white;
+    padding: 1rem;
+    margin: -1rem -1rem 1rem -1rem; /* Negative margin to align with container edges */
+    z-index: 5;
+    border-bottom: 1px solid var(--border-color);
+}
+
+h2 {
+    margin-bottom: 1rem;
+    color: var(--primary-color);
+}
+
+/* ... (rest of the calendar styles remain the same) ... */
+
+.booking-times-list {
+    display: grid;
+    gap: 1rem;
+}
+
+.court-item {
+    background-color: white;
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    padding: 1rem;
+    text-align: left;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.court-item:hover {
+    box-shadow: 0 4px 8px var(--shadow-color);
+}
+
+.court-item p {
+    margin-bottom: 0.5rem;
+}
+
+.item-title {
+    font-weight: bold;
+    color: var(--primary-color);
+}
+
+.bottom-nav {
+    display: flex;
+    justify-content: space-around;
+    background-color: white;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    padding: 0.5rem;
+    box-shadow: 0 -2px 4px var(--shadow-color);
+    z-index: 10;
+}
+
+.bottom-nav button {
+    background: none;
+    border: none;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    color: var(--light-text-color);
+    font-size: 0.8rem;
+    cursor: pointer;
+}
+
+.bottom-nav button.active {
+    color: var(--primary-color);
+}
+
+.bottom-nav button i {
+    font-size: 1.5rem;
+    margin-bottom: 0.25rem;
+}
+
+@media (min-width: 768px) {
+    .booking-content {
+        display: flex;
+        gap: 1rem;
+    }
+
+    .booking-calendar-container,
+    .booking-available-times {
+        flex: 1;
+    }
+}
+
+.booking-header {
+    background-color: var(--primary-color);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+
+.back-btn {
+    background: none;
+    border: none;
+    color: white;
+    font-size: 1.5rem;
+    cursor: pointer;
+}
+
+.search-bar {
+    flex-grow: 1;
+    margin-left: 1rem;
+    padding: 0.5rem;
+    border: none;
+    border-radius: 4px;
+    font-size: 1rem;
+}
+
+.booking-content {
+    padding: 1rem;
+}
+
+.booking-calendar-container,
+.booking-available-times {
+    background-color: white;
+    border-radius: 8px;
+    padding: 1rem;
+    margin-bottom: 1rem;
+    box-shadow: 0 2px 4px var(--shadow-color);
+}
+
+h2 {
+    margin-bottom: 1rem;
+    color: var(--primary-color);
+}
+
+/* .booking-calendar {
+     Add styles for your calendar component 
+} */
+
+.booking-times-list {
+    display: grid;
+    gap: 1rem;
+}
+
+.court-item {
+    background-color: white;
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    padding: 1rem;
+    text-align: left;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.court-item:hover {
+    box-shadow: 0 4px 8px var(--shadow-color);
+}
+
+.court-item p {
+    margin-bottom: 0.5rem;
+}
+
+.item-title {
+    font-weight: bold;
+    color: var(--primary-color);
+}
+
+.bottom-nav {
+    display: flex;
+    justify-content: space-around;
+    background-color: white;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    padding: 0.5rem;
+    box-shadow: 0 -2px 4px var(--shadow-color);
+}
+
+.bottom-nav button {
+    background: none;
+    border: none;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    color: var(--light-text-color);
+    font-size: 0.8rem;
+    cursor: pointer;
+}
+
+.bottom-nav button.active {
+    color: var(--primary-color);
+}
+
+.bottom-nav button i {
+    font-size: 1.5rem;
+    margin-bottom: 0.25rem;
+}
+
+@media (min-width: 768px) {
+    .booking-content {
+        display: flex;
+        gap: 1rem;
+    }
+
+    .booking-calendar-container,
+    .booking-available-times {
+        flex: 1;
+    }
+}
+
+:root {
+    --primary-color: #3498db;
+    --secondary-color: #2ecc71;
+    --background-color: #f4f4f4;
+    --text-color: #333;
+    --light-text-color: #7f8c8d;
+    --border-color: #e0e0e0;
+    --shadow-color: rgba(0, 0, 0, 0.1);
+}
+
+.booking-calendar {
+    background-color: white;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 2px 4px var(--shadow-color);
+}
+
+.calendar-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem;
+    background-color: var(--primary-color);
+    color: white;
+}
+
+.calendar-header button {
+    background: none;
+    border: none;
+    color: white;
+    font-size: 1.2rem;
+    cursor: pointer;
+}
+
+.calendar-weekdays {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    text-align: center;
+    font-weight: bold;
+    padding: 0.5rem 0;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.calendar-days {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    gap: 1px;
+    background-color: var(--border-color);
+}
+
+.calendar-day {
+    background-color: white;
+    padding: 0.5rem;
+    text-align: center;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.calendar-day:hover {
+    background-color: var(--background-color);
+}
+
+.calendar-day.selected {
+    background-color: var(--primary-color);
+    color: white;
+}
+
+.calendar-day.today {
+    font-weight: bold;
+    color: var(--primary-color);
+}
+
+.calendar-day.disabled {
+    color: var(--light-text-color);
+    cursor: not-allowed;
+}
+
