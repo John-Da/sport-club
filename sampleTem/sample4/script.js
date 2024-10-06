@@ -1,4 +1,4 @@
-
+import { availableTimes } from './courtData.js';
 
 // ------------------------------------ HOME ----------------------------------
 
@@ -27,33 +27,40 @@ document.addEventListener('DOMContentLoaded', () => {
 
 document.addEventListener('DOMContentLoaded', () => {
     const bookingTimesList = document.getElementById('booking-times-list');
+    const filterBtn = document.getElementById('filterBtn');
+    const courtFilter = document.getElementById('courtFilter');
+    const durationFilter = document.getElementById('durationFilter');
+    const bookingSection = document.querySelector('.booking-avialable-times');
     const navButtons = document.querySelectorAll('.bottom-nav button');
     const calendarDays = document.getElementById('calendarDays');
     const currentMonthElement = document.getElementById('currentMonth');
     const prevMonthButton = document.getElementById('prevMonth');
     const nextMonthButton = document.getElementById('nextMonth');
     const availableTimesTitle = document.querySelector('.available-times-title');
-    const searchBar = document.querySelector('.search-bar');
 
     let currentDate = new Date();
     let selectedDate = null;
 
-    // Sample data for available court times
-    const availableTimes = [
-        { court: 'Court A', time: '2:00 PM', duration: '2 hr(s)', price: '56 Baht' },
-        { court: 'Court A', time: '4:00 PM', duration: '2 hr(s)', price: '56 Baht' },
-        { court: 'Court A', time: '4:00 PM', duration: '2 hr(s)', price: '56 Baht' },
-        { court: 'Court A', time: '4:00 PM', duration: '2 hr(s)', price: '56 Baht' },
-        { court: 'Court A', time: '4:00 PM', duration: '2 hr(s)', price: '56 Baht' },
-        { court: 'Court A', time: '4:00 PM', duration: '2 hr(s)', price: '56 Baht' },
-        { court: 'Court A', time: '4:00 PM', duration: '2 hr(s)', price: '56 Baht' },
-        { court: 'Court A', time: '4:00 PM', duration: '2 hr(s)', price: '56 Baht' },
-        { court: 'Court A', time: '9:00 PM', duration: '1 hr(s)', price: '56 Baht' },
-    ];
 
-    // Populate available times dynamically
-    function populateAvailableTimes(filteredTimes = availableTimes) {
+    if (window.location.pathname.includes('bookings.html')) {
+        const urlParams = new URLSearchParams(window.location.search);
+        const selectedCourt = urlParams.get('court');
+
+        if (selectedCourt) {
+            courtFilter.value = selectedCourt;
+            bookingSection.style.display = 'block';
+            filterTimes();
+        } else {
+            filterTimes();
+        }
+    }
+
+    function populateAvailableTimes(filteredTimes) {
         bookingTimesList.innerHTML = '';
+        if (filteredTimes.length === 0) {
+            bookingTimesList.innerHTML = '<p>No available times match your selection.</p>';
+            return;
+        }
         filteredTimes.forEach(time => {
             const courtItem = document.createElement('button');
             courtItem.className = 'court-item';
@@ -68,15 +75,24 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // Handle booking action
     function bookCourt(time) {
-        if (selectedDate) {
-            const formattedDate = selectedDate.toLocaleDateString();
+        // Check if selectedDate is set or if booking for today
+        if (selectedDate || isToday(currentDate)) {
+            const formattedDate = (selectedDate || new Date()).toLocaleDateString();
             alert(`You've booked ${time.court} on ${formattedDate} at ${time.time} for ${time.duration}`);
         } else {
             alert('Please select a date before booking.');
         }
     }
+    
+    // Helper function to check if a date is today
+    function isToday(date) {
+        const today = new Date();
+        return date.getDate() === today.getDate() &&
+               date.getMonth() === today.getMonth() &&
+               date.getFullYear() === today.getFullYear();
+    }
+    
 
     // Update calendar
     function updateCalendar() {
@@ -145,16 +161,6 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
-    // Handle search functionality
-    // searchBar.addEventListener('input', (e) => {
-    //     const searchTerm = e.target.value.toLowerCase();
-    //     const filteredTimes = availableTimes.filter(time => 
-    //         time.court.toLowerCase().includes(searchTerm) ||
-    //         time.time.toLowerCase().includes(searchTerm)
-    //     );
-    //     populateAvailableTimes(filteredTimes);
-    // });
-
     // Sticky header behavior
     function handleScroll() {
         const rect = availableTimesTitle.getBoundingClientRect();
@@ -165,51 +171,6 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
 
-    // Add scroll event listener for sticky header
-    window.addEventListener('scroll', handleScroll);
-
-    // Initialize calendar and available times
-    updateCalendar();
-    populateAvailableTimes();
-});
-
-document.addEventListener('DOMContentLoaded', () => {
-    const bookingTimesList = document.getElementById('booking-times-list');
-    const filterBtn = document.getElementById('filterBtn');
-    const courtFilter = document.getElementById('courtFilter');
-    const durationFilter = document.getElementById('durationFilter');
-
-    const availableTimes = [
-        { court: 'Court A', time: '2:00 PM', duration: '2 hr(s)', price: '56 Baht' },
-        { court: 'Court B', time: '4:00 PM', duration: '2 hr(s)', price: '56 Baht' },
-        { court: 'Court C', time: '6:00 PM', duration: '1 hr(s)', price: '30 Baht' },
-        { court: 'Court D', time: '8:00 PM', duration: '2 hr(s)', price: '60 Baht' },
-        { court: 'Court E', time: '9:00 PM', duration: '1 hr(s)', price: '50 Baht' },
-    ];
-
-    // Populate available times dynamically
-    function populateAvailableTimes(filteredTimes = availableTimes) {
-        bookingTimesList.innerHTML = '';
-        filteredTimes.forEach(time => {
-            const courtItem = document.createElement('button');
-            courtItem.className = 'court-item';
-            courtItem.innerHTML = `
-                <p class="item-title">${time.court}</p>
-                <p class="item-time info">Time: ${time.time}</p>
-                <p class="item-duration info">Duration: ${time.duration}</p>
-                <p class="item-price info">Price: ${time.price}</p>
-            `;
-            courtItem.addEventListener('click', () => bookCourt(time));
-            bookingTimesList.appendChild(courtItem);
-        });
-    }
-
-    // Handle booking action
-    function bookCourt(time) {
-        alert(`You've booked ${time.court} at ${time.time} for ${time.duration}`);
-    }
-
-    // Filter function
     function filterTimes() {
         const selectedCourt = courtFilter.value;
         const selectedDuration = durationFilter.value;
@@ -223,10 +184,19 @@ document.addEventListener('DOMContentLoaded', () => {
         populateAvailableTimes(filteredTimes);
     }
 
-    // Attach filter button event
     filterBtn.addEventListener('click', filterTimes);
 
-    // Initialize the available times on page load
-    populateAvailableTimes();
+    courtFilter.addEventListener('change', filterTimes);
+    durationFilter.addEventListener('change', filterTimes);
+
+    // Add scroll event listener for sticky header
+    window.addEventListener('scroll', handleScroll);
+
+    // Initialize calendar and available times
+    updateCalendar();
+
+    if (courtFilter.value !== 'all') {
+        filterTimes();
+    }
 });
 
