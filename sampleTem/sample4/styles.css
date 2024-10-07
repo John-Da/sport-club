@@ -10,6 +10,7 @@
     --border-color: #e0e0e0;
     --shadow-color: rgba(0, 0, 0, 0.1);
     --btnHover-color: #2980b9;
+    --darkblue-color: #2c3e50;
 }
 
 
@@ -27,6 +28,256 @@ body {
     max-height: 100vh;
     width: 100%;
 }
+
+/* ---------------------------- Welcome Page ---------------------- */
+
+#welcomePage .welcome-content {
+    width: 100%;
+    height: 100vh;
+    background-color: #fff;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 5rem;
+    bottom: 0;
+}
+
+.welcome-text{
+    text-align: center;
+    padding: 1rem;
+}
+
+.welcome-text svg{
+    width: 12rem;
+    height: 12rem;
+}
+
+.welcome-text p {
+    padding: 6px;
+    font-size: 14px;
+    font-weight: 400;
+}
+
+.next-btn{
+    background-color: var(--primary-color);
+    text-decoration: none;
+    font-size: 1.3rem;
+    font-weight: 600;
+    color: #fff;
+    padding: 1rem;
+    width: 100px;
+    text-align: center;
+    border: none;
+    border-radius: 5px;
+    box-shadow: 0 4px 8px var(--shadow-color);
+    transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.next-btn:hover {
+    background-color: var(--btnHover-color);
+    transform: scale(1.05);
+}
+
+/* ---------------------------- Login Page ---------------------- */
+#registerPage {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: var(--primary-color);
+}
+
+.register-info {
+    background-color: #fff;
+    padding: 2rem;
+    border-radius: 10px;
+    box-shadow: 0 8px 16px var(--shadow-color);
+    text-align: center;
+    width: 300px; 
+    position: relative;
+    animation: fadeIn 1s ease-in-out;
+}
+
+.register-info h1 {
+    margin-bottom: 1rem;
+    color: var(--darkblue-color);
+}
+
+.register-inputs input {
+    width: 100%;
+    padding: 0.8rem;
+    margin-bottom: 1rem;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 1rem;
+    transition: all 0.3s ease;
+    outline: none;
+}
+
+.register-inputs input:focus {
+    border-color: var(--primary-color);
+    outline: none;
+    transform: scale(1.02);
+}
+
+.register-inputs p {
+    margin-top: 1rem;
+    font-size: 0.9rem;
+}
+
+.register-inputs a {
+    color: var(--primary-color);
+    text-decoration: none;
+    font-size: 0.9rem;
+}
+
+.register-inputs a:hover {
+    text-decoration: underline;
+}
+
+
+/* ---------------------------- Login Page ---------------------- */
+#loginPage {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: var(--primary-color);
+}
+
+.login-info {
+    background-color: #fff;
+    padding: 2rem;
+    border-radius: 10px;
+    box-shadow: 0 8px 16px var(--shadow-color);
+    text-align: center;
+    width: 300px; 
+    position: relative;
+    animation: fadeIn 1s ease-in-out;
+}
+
+.login-info h1 {
+    margin-bottom: 1rem;
+    color: var(--darkblue-color);
+}
+
+.login-inputs input {
+    width: 100%;
+    padding: 0.8rem;
+    margin-bottom: 1rem;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 1rem;
+    transition: all 0.3s ease;
+    outline: none;
+}
+
+.login-inputs input:focus {
+    border-color: var(--primary-color);
+    outline: none;
+    transform: scale(1.02);
+}
+
+.acc-submitBtn {
+    width: 100%;
+    padding: 0.8rem;
+    background-color: var(--primary-color);
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.acc-submitBtn:hover {
+    background-color: var(--btnHover-color);
+    transform: scale(1.05);
+}
+
+.acc-submitBtn:active {
+    transform: scale(0.95);
+}
+
+.login-inputs p {
+    margin-top: 1rem;
+    font-size: 0.9rem;
+}
+
+.login-inputs a {
+    color: var(--primary-color);
+    text-decoration: none;
+    font-size: 0.9rem;
+}
+
+.login-inputs a:hover {
+    text-decoration: underline;
+}
+
+.forgotBtn{
+    display: block;
+    margin-top: 0.5rem;
+}
+
+.error-message {
+    color: red;
+    font-size: 0.8rem;
+    display: none; 
+    margin-bottom: 0.5rem;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes fadeOut {
+    from {
+        opacity: 1;
+    }
+    to {
+        opacity: 0;
+    }
+}
+
+.fade-out {
+    animation: fadeOut 0.5s ease forwards;
+}
+
+.fade-in {
+    animation: fadeIn 0.5s ease forwards;
+}
+
+/* Shake animation for invalid inputs */
+.shake {
+    animation: shake 0.5s;
+}
+
+@keyframes shake {
+    0% { transform: translateX(0); }
+    25% { transform: translateX(-5px); }
+    50% { transform: translateX(5px); }
+    75% { transform: translateX(-5px); }
+    100% { transform: translateX(0); }
+}
+
+@media (max-width: 768px) {
+    .login-info {
+        width: 90%; 
+    }
+}
+
+
+
+/* ---------------------------- Main Page ---------------------- */
 
 .padding-sides {
     padding: 0 20px;

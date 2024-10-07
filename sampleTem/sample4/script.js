@@ -7,20 +7,112 @@ document.addEventListener('DOMContentLoaded', () => {
     const bookingsBtn = document.getElementById('bookingsBtn');
     const profileBtn = document.getElementById('profileBtn');
 
-    // Set up event listeners for each button
     homeBtn.addEventListener('click', () => {
-        window.location.href = 'index.html'; // Replace with the correct path to the Home page
+        window.location.href = 'index.html'; 
     });
 
     bookingsBtn.addEventListener('click', () => {
-        window.location.href = 'bookings.html'; // Replace with the correct path to the Bookings page
+        window.location.href = 'bookings.html'; 
     });
 
     profileBtn.addEventListener('click', () => {
-        window.location.href = 'profile.html'; // Replace with the correct path to the Profile page
+        window.location.href = 'profile.html'; 
     });
 });
 
+
+// ------------------------------------ Register Page ----------------------------------
+
+document.querySelector('.acc-submitBtn').addEventListener('click', function (e) {
+    e.preventDefault();
+
+    const name = document.getElementById('name');
+    const email = document.getElementById('email');
+    const password = document.getElementById('password');
+    const nameError = document.getElementById('name-error');
+    const emailError = document.getElementById('email-error');
+    const passwordError = document.getElementById('password-error');
+
+    let isValid = true;
+
+    if (name.value === '') {
+        name.classList.add('shake');
+        nameError.style.display = 'block';
+        isValid = false;
+    } else {
+        nameError.style.display = 'none';
+    }
+
+    if (email.value === '') {
+        email.classList.add('shake');
+        emailError.style.display = 'block';
+        isValid = false;
+    } else {
+        emailError.style.display = 'none';
+    }
+
+    if (password.value === '') {
+        password.classList.add('shake');
+        passwordError.style.display = 'block';
+        isValid = false;
+    } else {
+        passwordError.style.display = 'none';
+    }
+
+    setTimeout(() => {
+        name.classList.remove('shake');
+        email.classList.remove('shake');
+        password.classList.remove('shake');
+    }, 500);
+
+    if (isValid) {
+        document.querySelector('.register-info').classList.add('fade-out');
+        setTimeout(() => {
+            window.location.href = 'loginPage.html';
+        }, 500);
+    }
+});
+
+
+// ------------------------------------ Login Page ----------------------------------
+document.querySelector('.acc-submitBtn').addEventListener('click', function (e) {
+    e.preventDefault();
+
+    const email = document.getElementById('email');
+    const password = document.getElementById('password');
+    const emailError = document.getElementById('email-error');
+    const passwordError = document.getElementById('password-error');
+
+    let isValid = true;
+
+    if (email.value === '') {
+        email.classList.add('shake');
+        emailError.style.display = 'block';
+        isValid = false;
+    } else {
+        emailError.style.display = 'none'; 
+    }
+
+    if (password.value === '') {
+        password.classList.add('shake');
+        passwordError.style.display = 'block';
+        isValid = false;
+    } else {
+        passwordError.style.display = 'none'; 
+    }
+
+    setTimeout(() => {
+        email.classList.remove('shake');
+        password.classList.remove('shake');
+    }, 500);
+
+    if (isValid) {
+        document.querySelector('.login-info').classList.add('fade-out');
+        setTimeout(() => {
+            window.location.href = 'index.html';
+        }, 500);
+    }
+});
 
 
 // ------------------------------------ BOOKINGs ----------------------------------
@@ -76,7 +168,6 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     function bookCourt(time) {
-        // Check if selectedDate is set or if booking for today
         if (selectedDate || isToday(currentDate)) {
             const formattedDate = (selectedDate || new Date()).toLocaleDateString();
             alert(`You've booked ${time.court} on ${formattedDate} at ${time.time} for ${time.duration}`);
@@ -84,17 +175,15 @@ document.addEventListener('DOMContentLoaded', () => {
             alert('Please select a date before booking.');
         }
     }
-    
-    // Helper function to check if a date is today
+
     function isToday(date) {
         const today = new Date();
         return date.getDate() === today.getDate() &&
-               date.getMonth() === today.getMonth() &&
-               date.getFullYear() === today.getFullYear();
+            date.getMonth() === today.getMonth() &&
+            date.getFullYear() === today.getFullYear();
     }
-    
 
-    // Update calendar
+
     function updateCalendar() {
         const year = currentDate.getFullYear();
         const month = currentDate.getMonth();
@@ -105,12 +194,10 @@ document.addEventListener('DOMContentLoaded', () => {
 
         calendarDays.innerHTML = '';
 
-        // Fill calendar with empty days
         for (let i = 0; i < firstDay.getDay(); i++) {
             calendarDays.appendChild(document.createElement('div'));
         }
 
-        // Fill calendar with active days
         for (let day = 1; day <= lastDay.getDate(); day++) {
             const dayElement = document.createElement('div');
             dayElement.classList.add('calendar-day');
@@ -135,14 +222,12 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
 
-    // Handle date selection
     function selectDate(date) {
         selectedDate = date;
         updateCalendar();
         populateAvailableTimes();
     }
 
-    // Handle month navigation
     prevMonthButton.addEventListener('click', () => {
         currentDate.setMonth(currentDate.getMonth() - 1);
         updateCalendar();
@@ -153,7 +238,6 @@ document.addEventListener('DOMContentLoaded', () => {
         updateCalendar();
     });
 
-    // Handle bottom navigation button states
     navButtons.forEach(button => {
         button.addEventListener('click', () => {
             navButtons.forEach(btn => btn.classList.remove('active'));
@@ -161,7 +245,6 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
-    // Sticky header behavior
     function handleScroll() {
         const rect = availableTimesTitle.getBoundingClientRect();
         if (rect.top <= 0) {
@@ -189,10 +272,8 @@ document.addEventListener('DOMContentLoaded', () => {
     courtFilter.addEventListener('change', filterTimes);
     durationFilter.addEventListener('change', filterTimes);
 
-    // Add scroll event listener for sticky header
     window.addEventListener('scroll', handleScroll);
 
-    // Initialize calendar and available times
     updateCalendar();
 
     if (courtFilter.value !== 'all') {
