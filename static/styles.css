@@ -29,6 +29,41 @@ body {
     width: 100%;
 }
 
+
+/* ----------------------------- NAVBAR --------------------------- */
+.bottom-nav {
+    display: flex;
+    justify-content: space-around;
+    background-color: white;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    padding: 0.5rem;
+    box-shadow: 0 -2px 4px var(--shadow-color);
+}
+
+.bottom-nav a {
+    background: none;
+    border: none;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    color: var(--light-text-color);
+    font-size: 0.8rem;
+    cursor: pointer;
+    text-decoration: none;
+}
+
+.bottom-nav a.active {
+    color: var(--primary-color);
+}
+
+.bottom-nav a i {
+    font-size: 1.5rem;
+    margin-bottom: 0.25rem;
+}
+
 /* ---------------------------- Welcome Page ---------------------- */
 
 #welcomePage .welcome-content {
@@ -303,8 +338,8 @@ body {
 }
 
 .home-header .logo {
-    font-size: 2.2rem;
-    font-weight: 900;
+    width: 3.4rem;
+    height: 3.4rem;
     color: #fff;
 }
 
@@ -753,38 +788,7 @@ body {
 
 
 
-/* ----------------------------- NAVBAR --------------------------- */
-.bottom-nav {
-    display: flex;
-    justify-content: space-around;
-    background-color: white;
-    position: fixed;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    padding: 0.5rem;
-    box-shadow: 0 -2px 4px var(--shadow-color);
-}
 
-.bottom-nav button {
-    background: none;
-    border: none;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    color: var(--light-text-color);
-    font-size: 0.8rem;
-    cursor: pointer;
-}
-
-.bottom-nav button.active {
-    color: var(--primary-color);
-}
-
-.bottom-nav button i {
-    font-size: 1.5rem;
-    margin-bottom: 0.25rem;
-}
 
 @media (min-width: 768px) {
     .booking-content {
