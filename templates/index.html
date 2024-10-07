@@ -1,0 +1,60 @@
+{% extends 'base.html' %}
+
+{% block title}
+Home
+{% endblock %}
+
+{% block content %}
+    <div class="home-header padding-sides">
+        <!-- <img class="logo" src="./images/cola.png" alt="logo"> -->
+        <p class="logo">LOGO</p>
+        <button id="notificationBtn">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" fill="currentColor">
+                <path d="M224 0c-17.7 0-32 14.3-32 32l0 19.2C119 66 64 130.6 64 208l0 18.8c0 47-17.3 92.4-48.5 127.6l-7.4 8.3c-8.4 9.4-10.4 22.9-5.3 34.4S19.4 416 32 416l384 0c12.6 0 24-7.4 29.2-18.9s3.1-25-5.3-34.4l-7.4-8.3C401.3 319.2 384 273.9 384 226.8l0-18.8c0-77.4-55-142-128-156.8L256 32c0-17.7-14.3-32-32-32zm45.3 493.3c12-12 18.7-28.3 18.7-45.3l-64 0-64 0c0 17 6.7 33.3 18.7 45.3s28.3 18.7 45.3 18.7s33.3-6.7 45.3-18.7z"/>
+            </svg>
+        </button>
+    </div>
+    <div class="home-content">
+        <h2>Book Now?</h2>
+        <div id="mainpage" class="court-items-grid">
+            <a href="bookings.html?court=Court%20A" class="court">Court A</a>
+            <a href="bookings.html?court=Court%20B" class="court">Court B</a>
+            <a href="bookings.html?court=Court%20C" class="court">Court C</a>
+            <a href="bookings.html?court=Court%20D" class="court">Court D</a>
+            <a href="bookings.html?court=Court%20E" class="court">Court E</a>
+        </div>
+        <div class="rules" id="list-of-rules">
+            <h3>Rules &amp; Info <a href="#"><i class="fa-solid fa-up-right-from-square"></i></a></h3>
+            <ul id="rulesList">
+                <li>alsfng eoirutjeoawjr0 jwotjgneorjgoj ojfoajedfjnflg.asldfkahjfsgkknkgejrl ajsdlfj.</li>
+                <li>alsfng eoirutjeoawjr0 jwotjgneorjgoj ojfoajedfjnflg.asldfkahjfsgkknkgejrl ajsdlfj.</li>
+                <li>alsfng eoirutjeoawjr0 jwotjgneorjgoj ojfoajedfjnflg.asldfkahjfsgkknkgejrl ajsdlfj.</li>
+                <li>alsfng eoirutjeoawjr0 jwotjgneorjgoj ojfoajedfjnflg. asld fkahj fsgkkn kgejrl ajsdlfj.</li>
+                <li>alsfng eoirutjeoawjr0 jwotjgneorjgoj ojfoajedfjnflg.asldfkahjfsgkknkgejrl ajsdlfj.</li>
+                <li>alsfng eoirutjeoawjr0 jwotjgneorjgoj ojfoajedfjnflg.asldfkahjfsgkknkgejrl ajsdlfj.</li>
+                <li>alsfng eoirutjeoawjr0 jwotjgneorjgoj ojfoajedfjnflg.asldfkahjfsgkknkgejrl ajsdlfj.</li>
+                <li>alsfng eoirutjeoawjr0 jwotjgneorjgoj ojfoajedfjnflg.asldfkahjfsgkknkgejrl ajsdlfj.</li>
+                <li>alsfng eoirutjeoawjr0 jwotjgneorjgoj ojfoajedfjnflg.asldfkahjfsgkknkgejrl ajsdlfj.</li>
+                <li>alsfng eoirutjeoawjr0 jwotjgneorjgoj ojfoajedfjnflg.asldfkahjfsgkknkgejrl ajsdlfj.</li>
+                <li>alsfng eoirutjeoawjr0 jwotjgneorjgoj ojfoajedfjnflg.asldfkahjfsgkknkgejrl ajsdlfj.</li>
+                <li>alsfng eoirutjeoawjr0 jwotjgneorjgoj ojfoajedfjnflg.asldfkahjfsgkknkgejrl ajsdlfj.</li>
+            </ul>
+        </div>
+    </div>
+
+    <nav class="bottom-nav">
+        <button id="homeBtn" class="active">
+            <i class="fas fa-home"></i>
+            <span>Home</span>
+        </button>
+        <button id="bookingsBtn">
+            <i class="fas fa-calendar-alt"></i>
+            <span>Bookings</span>
+        </button>
+        <button id="profileBtn">
+            <i class="fas fa-user"></i>
+            <span>Profile</span>
+        </button>
+    </nav>
+    
+{% endblock %}

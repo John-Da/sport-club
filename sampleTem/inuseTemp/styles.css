@@ -1,0 +1,801 @@
+
+
+
+:root {
+    --primary-color: #3498db;
+    --secondary-color: #2ecc71;
+    --background-color: #f4f4f4;
+    --text-color: #333;
+    --light-text-color: #7f8c8d;
+    --border-color: #e0e0e0;
+    --shadow-color: rgba(0, 0, 0, 0.1);
+    --btnHover-color: #2980b9;
+    --darkblue-color: #2c3e50;
+}
+
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: "Roboto";
+    background-color: var(--background-color);
+    color: var(--text-color);
+    line-gap-override: 1.6;
+    max-height: 100vh;
+    width: 100%;
+}
+
+/* ---------------------------- Welcome Page ---------------------- */
+
+#welcomePage .welcome-content {
+    width: 100%;
+    height: 100vh;
+    background-color: #fff;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 5rem;
+    bottom: 0;
+}
+
+.welcome-text{
+    text-align: center;
+    padding: 1rem;
+}
+
+.welcome-text svg{
+    width: 12rem;
+    height: 12rem;
+}
+
+.welcome-text p {
+    padding: 6px;
+    font-size: 14px;
+    font-weight: 400;
+}
+
+.next-btn{
+    background-color: var(--primary-color);
+    text-decoration: none;
+    font-size: 1.3rem;
+    font-weight: 600;
+    color: #fff;
+    padding: 1rem;
+    width: 100px;
+    text-align: center;
+    border: none;
+    border-radius: 5px;
+    box-shadow: 0 4px 8px var(--shadow-color);
+    transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.next-btn:hover {
+    background-color: var(--btnHover-color);
+    transform: scale(1.05);
+}
+
+/* ---------------------------- Login Page ---------------------- */
+#registerPage {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: var(--primary-color);
+}
+
+.register-info {
+    background-color: #fff;
+    padding: 2rem;
+    border-radius: 10px;
+    box-shadow: 0 8px 16px var(--shadow-color);
+    text-align: center;
+    width: 300px; 
+    position: relative;
+    animation: fadeIn 1s ease-in-out;
+}
+
+.register-info h1 {
+    margin-bottom: 1rem;
+    color: var(--darkblue-color);
+}
+
+.register-inputs input {
+    width: 100%;
+    padding: 0.8rem;
+    margin-bottom: 1rem;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 1rem;
+    transition: all 0.3s ease;
+    outline: none;
+}
+
+.register-inputs input:focus {
+    border-color: var(--primary-color);
+    outline: none;
+    transform: scale(1.02);
+}
+
+.register-inputs p {
+    margin-top: 1rem;
+    font-size: 0.9rem;
+}
+
+.register-inputs a {
+    color: var(--primary-color);
+    text-decoration: none;
+    font-size: 0.9rem;
+}
+
+.register-inputs a:hover {
+    text-decoration: underline;
+}
+
+
+/* ---------------------------- Login Page ---------------------- */
+#loginPage {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: var(--primary-color);
+}
+
+.login-info {
+    background-color: #fff;
+    padding: 2rem;
+    border-radius: 10px;
+    box-shadow: 0 8px 16px var(--shadow-color);
+    text-align: center;
+    width: 300px; 
+    position: relative;
+    animation: fadeIn 1s ease-in-out;
+}
+
+.login-info h1 {
+    margin-bottom: 1rem;
+    color: var(--darkblue-color);
+}
+
+.login-inputs input {
+    width: 100%;
+    padding: 0.8rem;
+    margin-bottom: 1rem;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 1rem;
+    transition: all 0.3s ease;
+    outline: none;
+}
+
+.login-inputs input:focus {
+    border-color: var(--primary-color);
+    outline: none;
+    transform: scale(1.02);
+}
+
+.acc-submitBtn {
+    width: 100%;
+    padding: 0.8rem;
+    background-color: var(--primary-color);
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.acc-submitBtn:hover {
+    background-color: var(--btnHover-color);
+    transform: scale(1.05);
+}
+
+.acc-submitBtn:active {
+    transform: scale(0.95);
+}
+
+.login-inputs p {
+    margin-top: 1rem;
+    font-size: 0.9rem;
+}
+
+.login-inputs a {
+    color: var(--primary-color);
+    text-decoration: none;
+    font-size: 0.9rem;
+}
+
+.login-inputs a:hover {
+    text-decoration: underline;
+}
+
+.forgotBtn{
+    display: block;
+    margin-top: 0.5rem;
+}
+
+.error-message {
+    color: red;
+    font-size: 0.8rem;
+    display: none; 
+    margin-bottom: 0.5rem;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes fadeOut {
+    from {
+        opacity: 1;
+    }
+    to {
+        opacity: 0;
+    }
+}
+
+.fade-out {
+    animation: fadeOut 0.5s ease forwards;
+}
+
+.fade-in {
+    animation: fadeIn 0.5s ease forwards;
+}
+
+/* Shake animation for invalid inputs */
+.shake {
+    animation: shake 0.5s;
+}
+
+@keyframes shake {
+    0% { transform: translateX(0); }
+    25% { transform: translateX(-5px); }
+    50% { transform: translateX(5px); }
+    75% { transform: translateX(-5px); }
+    100% { transform: translateX(0); }
+}
+
+@media (max-width: 768px) {
+    .login-info {
+        width: 90%; 
+    }
+}
+
+
+
+/* ---------------------------- Main Page ---------------------- */
+
+.padding-sides {
+    padding: 0 20px;
+}
+
+.home-header {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 1000;
+
+    width: 100%;
+    height: 4rem;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    background: var(--primary-color);
+    padding: 0 1.2rem;
+
+    align-content: center;
+    box-shadow: 0 2px 3px 2px rgba(0,0,0,0.1);
+}
+
+.home-header .logo {
+    font-size: 2.2rem;
+    font-weight: 900;
+    color: #fff;
+}
+
+#notificationBtn svg {
+    width: 30px;
+    height: 30px;
+}
+
+#notificationBtn {
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+    color: #fff;
+}
+
+@media (max-width: 600px) {
+    .header {
+        height: 4rem; 
+    }
+
+    .header .logo {
+        width: 100px;
+        height: 40px; 
+    }
+}
+
+
+.home-content {
+    max-width: 100%;
+    margin: 60px auto 0;
+    padding: 20px;
+    padding-bottom: 80px;
+}
+
+.home-content h2 {
+    margin-bottom: 1.2rem;
+    font-size: 2.1rem;
+    color: var(--darktext-color);
+}
+
+#mainpage {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 15px;
+    margin-bottom: 20px;
+}
+
+#mainpage .court {
+    background-color: #3498db;
+    border: none;
+    color: #fff;
+    padding: 20px 0;
+    text-align: center;
+    align-content: center;
+    text-decoration: none;
+    font-size: 1.6rem;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    border-radius: 5px;
+    box-sizing: 0 2px 4px rgba(0,0,0,0.1);
+    height: 9rem;
+}
+
+#mainpage .court:hover {
+    background-color: #2980b9;
+}
+
+.rules {
+    background-color: #fff;
+    padding: 15px;
+    border-radius: 5px;
+    box-shadow: 0 2px 4px rgba(0, 0,0, 0.1);
+}
+
+.rules h3 {
+    margin-top: 0;
+    color: var(--darktext-color);
+    font-size: 1.6rem;
+    margin-bottom: 1rem;
+    text-decoration: underline;
+}
+
+.rules h3 a {
+    margin-left: 10px;
+    font-size: 16px;
+    color: var(--dark-color);
+}
+
+
+#list-of-rules {
+    width: 100%; 
+    max-width: 400px; 
+}
+
+#rulesList {
+    max-height: 340px; 
+    overflow-y: auto; 
+    padding: 10px 10px 10px 20px;
+    margin: 0;
+    border: none; 
+    border-radius: 12px;
+    background-color: #f9f9f9; 
+}
+
+#rulesList li {
+    list-style-type: disc; 
+    margin-bottom: 10px;
+    letter-spacing: 0.45px;
+    line-height: 1.3;
+}
+
+
+/* ___--------___-__--__-__-_____ Bookings ____-----___---- */
+
+.booking-header {
+    background-color: var(--primary-color);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem;
+    position: relative;
+    top: 0;
+    z-index: 1;
+}
+
+.back-btn {
+    background: none;
+    border: none;
+    color: white;
+    font-size: 1.5rem;
+    cursor: pointer;
+}
+
+.booking-header h1{
+    width: 69%;
+    color: #fff;
+}
+
+.booking-header .search-bar {
+    flex-grow: 1;
+    margin-left: 1rem;
+    padding: 0.5rem;
+    border: none;
+    border-radius: 4px;
+    font-size: 1rem;
+}
+
+.booking-calendar-container,
+.booking-available-times {
+    background-color: white;
+    border-radius: 8px;
+    padding: 1rem;
+    margin: 1rem;
+    box-shadow: 0 1px 2px var(--shadow-color);
+}
+
+.booking-calendar-container .inner-calendar h2{
+    text-align: center;
+    margin-bottom: 1rem;
+    color: var(--primary-color);
+}
+
+.booking-calendar {
+    background-color: white;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 2px 4px var(--shadow-color);
+}
+
+.calendar-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem;
+    background-color: var(--primary-color);
+    color: white;
+}
+
+.calendar-header button {
+    background: none;
+    border: none;
+    color: white;
+    font-size: 1.2rem;
+    cursor: pointer;
+}
+
+.calendar-weekdays {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    text-align: center;
+    font-weight: bold;
+    padding: 0.5rem 0;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.calendar-days {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    gap: 1px;
+    background-color: var(--border-color);
+}
+
+.calendar-day {
+    background-color: white;
+    padding: 0.5rem;
+    text-align: center;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.calendar-day:hover {
+    background-color: var(--background-color);
+}
+
+.calendar-day.selected {
+    background-color: var(--light-text-color);
+    color: white;
+}
+
+.calendar-day.today {
+    font-weight: bold;
+    background-color: var(--primary-color);
+    color: #fff;
+}
+
+.calendar-day.disabled {
+    color: var(--light-text-color);
+    cursor: not-allowed;
+}
+
+.booking-available-times {
+    position: relative;
+    background-color: white;
+    border-radius: 8px;
+    margin-bottom: 1rem;
+    box-shadow: 0 2px 4px var(--shadow-color);
+    overflow: hidden;
+}
+
+.available-times-title {
+    position: sticky;
+    top: 0;
+    z-index: 5;
+    padding: 1rem;
+    margin: 0;
+    font-size: 1.7rem;
+    color: var(--primary-color);
+    background-color: white;
+    transition: background-color 0.2s, color 0.2s;
+}
+
+.available-times-title.sticky {
+    background-color: var(--primary-color);
+    color: white;
+}
+
+.filter-section {
+    display: flex;
+    gap: 10px;
+    padding: 10px 16px;
+    align-items: center;
+    justify-content: space-between;
+    background-color: #fff;
+    margin-bottom: 1px;
+    border: none;
+}
+
+.filter-section select {
+    font-size: 1rem;
+    border: 1px solid var(--border-color);
+    padding: 5px;
+    border-radius: 5px;
+    outline: none;
+}
+
+#filterBtn {
+    background-color: var(--primary-color);
+    color: #fff;
+    border: none;
+    padding: 1rem;
+    border-radius: 12px;
+    font-weight: 600;
+    font-size: 1rem;
+    width: 90px;
+    letter-spacing: 0.6px;
+}
+
+#filterBtn:hover{
+    background-color: var(--btnHover-color);
+}
+
+.booking-times-info {
+    width: 100%; 
+    max-width: 400px;
+    padding: 1rem;
+    background-color: #fff;
+}
+
+.booking-times-list {
+    display: grid;
+    gap: 1rem;
+    margin-bottom: 4rem;
+}
+
+.court-item {
+    background-color: white;
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    padding: 1rem;
+    text-align: left;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.court-item:hover {
+    box-shadow: 0 4px 8px var(--shadow-color);
+}
+
+.court-item p {
+    margin-bottom: 0.5rem;
+}
+
+.item-title {
+    font-weight: bold;
+    font-size: 1.6rem;
+    color: var(--primary-color);
+    margin-bottom: 0.5rem;
+}
+
+.court-item .info{
+    font-size: 14px;
+    font-weight: 500;
+    letter-spacing: 0.7px;
+}
+
+
+/* ----------------------------- PROFILE --------------------------- */
+.profile-header {
+    background-color: var(--primary-color);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem;
+    margin: 0;
+}
+
+.header-back-btn {
+    background: none;
+    border: none;
+    color: white;
+    font-size: 1.5rem;
+    cursor: pointer;
+    width: 2rem;
+}
+
+.profile-header-title{
+    text-align: left;
+    width: 70%;
+    font-size: 1.5rem;
+    font-weight: 800;
+    color: #fff;
+}
+
+.profile-content{
+    background-color: #fff;
+    width: 100%;
+    height: 100vh;
+}
+
+.profile-status-info {
+    border: none;
+    box-shadow: 0 3px 8px var(--shadow-color);
+    padding: 1rem;
+    border-radius: 15px;
+    
+    height: 7rem;
+
+    display: grid;
+    grid-template-columns: 80px 1fr;
+    gap: 20px;
+
+    background-color: var(--primary-color);
+    align-items: center;
+    margin: 30px 15px 1.3rem 15px;
+}
+
+.profile-status-info img{
+    max-width: 100%;
+    height: auto;
+    border-radius: 50%;
+}
+
+.general-info h1,
+.general-info p {
+    color: #fff;
+}
+
+.app-settings {
+    width: 100%;
+    height: auto;
+}
+
+.individual-settings{
+    display: grid;
+    grid-template-rows: repeat(4, 1fr);
+    margin: 6rem 0;
+}
+
+.settingsBtn{
+    border: none;
+    border-bottom: 1px solid var(--border-color);
+    font-size: 20px;
+    font-weight: 600;
+    text-align: left;
+    background-color: #fff;
+    padding: 1rem;
+    margin: 0.5rem 0;
+    transition: background-color 0.15s ease, color 0.15s ease;
+}
+
+.settingsBtn:hover{
+    background-color: var(--light-text-color);
+    color: #fff;
+}
+
+
+
+#logoutBtn{
+    background-color: none;
+    border: none;
+    padding: 10px 20px;
+    border: none;
+    cursor: pointer;
+    width: 100%;
+    height: 3rem;
+    margin-top: 5rem;
+    margin-bottom: 1rem;
+    font-size: 0.8rem;
+    font-weight: 700;
+    background-color: transparent;
+}
+
+#logoutBtn:hover{
+    background-color: var(--border-color);
+}
+
+
+
+/* ----------------------------- NAVBAR --------------------------- */
+.bottom-nav {
+    display: flex;
+    justify-content: space-around;
+    background-color: white;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    padding: 0.5rem;
+    box-shadow: 0 -2px 4px var(--shadow-color);
+}
+
+.bottom-nav button {
+    background: none;
+    border: none;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    color: var(--light-text-color);
+    font-size: 0.8rem;
+    cursor: pointer;
+}
+
+.bottom-nav button.active {
+    color: var(--primary-color);
+}
+
+.bottom-nav button i {
+    font-size: 1.5rem;
+    margin-bottom: 0.25rem;
+}
+
+@media (min-width: 768px) {
+    .booking-content {
+        display: flex;
+        gap: 1rem;
+    }
+
+    .booking-calendar-container,
+    .booking-available-times {
+        flex: 1;
+    }
+}
+
+
