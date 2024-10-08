@@ -1,0 +1,222 @@
+/* ___--------___-__--__-__-_____ Bookings ____-----___---- */
+
+.booking-header {
+    background-color: var(--primary-color);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem;
+    position: relative;
+    top: 0;
+    z-index: 1;
+}
+
+.back-btn {
+    background: none;
+    border: none;
+    color: white;
+    font-size: 1.5rem;
+    cursor: pointer;
+}
+
+.booking-header h1{
+    width: 69%;
+    color: #fff;
+}
+
+.booking-header .search-bar {
+    flex-grow: 1;
+    margin-left: 1rem;
+    padding: 0.5rem;
+    border: none;
+    border-radius: 4px;
+    font-size: 1rem;
+}
+
+.booking-calendar-container,
+.booking-available-times {
+    background-color: white;
+    border-radius: 8px;
+    padding: 1rem;
+    margin: 1rem;
+    box-shadow: 0 1px 2px var(--shadow-color);
+}
+
+.booking-calendar-container .inner-calendar h2{
+    text-align: center;
+    margin-bottom: 1rem;
+    color: var(--primary-color);
+}
+
+.booking-calendar {
+    background-color: white;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 2px 4px var(--shadow-color);
+}
+
+.calendar-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem;
+    background-color: var(--primary-color);
+    color: white;
+}
+
+.calendar-header button {
+    background: none;
+    border: none;
+    color: white;
+    font-size: 1.2rem;
+    cursor: pointer;
+}
+
+.calendar-weekdays {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    text-align: center;
+    font-weight: bold;
+    padding: 0.5rem 0;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.calendar-days {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    gap: 1px;
+    background-color: var(--border-color);
+}
+
+.calendar-day {
+    background-color: white;
+    padding: 0.5rem;
+    text-align: center;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.calendar-day:hover {
+    background-color: var(--background-color);
+}
+
+.calendar-day.selected {
+    background-color: var(--light-text-color);
+    color: white;
+}
+
+.calendar-day.today {
+    font-weight: bold;
+    background-color: var(--primary-color);
+    color: #fff;
+}
+
+.calendar-day.disabled {
+    color: var(--light-text-color);
+    cursor: not-allowed;
+}
+
+.booking-available-times {
+    position: relative;
+    background-color: white;
+    border-radius: 8px;
+    margin-bottom: 1rem;
+    box-shadow: 0 2px 4px var(--shadow-color);
+    overflow: hidden;
+}
+
+.available-times-title {
+    position: sticky;
+    top: 0;
+    z-index: 5;
+    padding: 1rem;
+    margin: 0;
+    font-size: 1.7rem;
+    color: var(--primary-color);
+    background-color: white;
+    transition: background-color 0.2s, color 0.2s;
+}
+
+.available-times-title.sticky {
+    background-color: var(--primary-color);
+    color: white;
+}
+
+.filter-section {
+    display: flex;
+    gap: 10px;
+    padding: 10px 16px;
+    align-items: center;
+    justify-content: space-between;
+    background-color: #fff;
+    margin-bottom: 1px;
+    border: none;
+}
+
+.filter-section select {
+    font-size: 1rem;
+    border: 1px solid var(--border-color);
+    padding: 5px;
+    border-radius: 5px;
+    outline: none;
+}
+
+#filterBtn {
+    background-color: var(--primary-color);
+    color: #fff;
+    border: none;
+    padding: 1rem;
+    border-radius: 12px;
+    font-weight: 600;
+    font-size: 1rem;
+    width: 90px;
+    letter-spacing: 0.6px;
+}
+
+#filterBtn:hover{
+    background-color: var(--btnHover-color);
+}
+
+.booking-times-info {
+    width: 100%; 
+    max-width: 400px;
+    padding: 1rem;
+    background-color: #fff;
+}
+
+.booking-times-list {
+    display: grid;
+    gap: 1rem;
+    margin-bottom: 4rem;
+}
+
+.court-item {
+    background-color: white;
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    padding: 1rem;
+    text-align: left;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.court-item:hover {
+    box-shadow: 0 4px 8px var(--shadow-color);
+}
+
+.court-item p {
+    margin-bottom: 0.5rem;
+}
+
+.item-title {
+    font-weight: bold;
+    font-size: 1.6rem;
+    color: var(--primary-color);
+    margin-bottom: 0.5rem;
+}
+
+.court-item .info{
+    font-size: 14px;
+    font-weight: 500;
+    letter-spacing: 0.7px;
+}

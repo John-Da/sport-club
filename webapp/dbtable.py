@@ -1,4 +1,4 @@
-from run_app import app, db
+from webapp import app, db
 
 def create_db():
     with app.app_context():

@@ -1,0 +1,48 @@
+{% extends 'base.html' %}
+{% block title %} Confirm Booking {% endblock %}
+
+{% block content %}
+    <header class="confirmBooking-header">
+        <button class="confirmBooking-back-btn" aria-label="Go back"><i class="fas fa-chevron-left"></i></button>
+        <p class="confirmBooking-header-title">Confirm</p>
+    </header>
+
+    <div class="bookingform_container">
+        <form action="#">
+            <div class="formItems">
+                <label for="court">Court name</label>
+                <input id="court" type="text" name="court" placeholder="Enter court name">
+            </div>
+            <div class="formItems">
+                <label for="duration">Duration</label>
+                <input id="duration" type="text" name="duration" placeholder="Enter duration">
+            </div>
+            <div class="formItems">
+                <label for="time">Time</label>
+                <input id="time" type="time" name="time">
+            </div>
+            <div class="formItems">
+                <label for="date">Date</label>
+                <input id="date" type="date" name="date">
+            </div>
+            <div class="formItems">
+                <label for="price">Price</label>
+                <input id="price" type="text" name="price" placeholder="Enter price">
+            </div>
+            <div class="formItems">
+                <label for="payment">Payment Method</label>
+                <select id="payment">
+                    <option value="SCB">SCB</option>
+                    <option value="K+">K+</option>
+                    <option value="Kasicon">Kasicon</option>
+                    <option value="BangKok Saving">BangKok Saving</option>
+                </select>
+            </div>
+        </form>
+        <div class="formbtn">
+            <button class="formCancel">Cancel</button>
+            <button class="formConfirm">Confirm</button>
+        </div>
+    </div>    
+    
+{% endblock %}

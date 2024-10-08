@@ -7,110 +7,126 @@ document.addEventListener('DOMContentLoaded', () => {
     const bookingsBtn = document.getElementById('bookingsBtn');
     const profileBtn = document.getElementById('profileBtn');
 
-    homeBtn.addEventListener('click', () => {
-        window.location.href = 'index.html'; 
-    });
-
-    bookingsBtn.addEventListener('click', () => {
-        window.location.href = 'bookings.html'; 
-    });
-
-    profileBtn.addEventListener('click', () => {
-        window.location.href = 'profile.html'; 
-    });
-});
-
-
-// ------------------------------------ Register Page ----------------------------------
-
-document.querySelector('.acc-submitBtn').addEventListener('click', function (e) {
-    e.preventDefault();
-
-    const name = document.getElementById('name');
-    const email = document.getElementById('email');
-    const password = document.getElementById('password');
-    const nameError = document.getElementById('name-error');
-    const emailError = document.getElementById('email-error');
-    const passwordError = document.getElementById('password-error');
-
-    let isValid = true;
-
-    if (name.value === '') {
-        name.classList.add('shake');
-        nameError.style.display = 'block';
-        isValid = false;
-    } else {
-        nameError.style.display = 'none';
+    if (homeBtn) {
+        homeBtn.addEventListener('click', () => {
+            window.location.href = 'index.html'; 
+        });
     }
 
-    if (email.value === '') {
-        email.classList.add('shake');
-        emailError.style.display = 'block';
-        isValid = false;
-    } else {
-        emailError.style.display = 'none';
+    if (bookingsBtn) {
+        bookingsBtn.addEventListener('click', () => {
+            window.location.href = 'bookings.html'; 
+        });
     }
 
-    if (password.value === '') {
-        password.classList.add('shake');
-        passwordError.style.display = 'block';
-        isValid = false;
-    } else {
-        passwordError.style.display = 'none';
-    }
-
-    setTimeout(() => {
-        name.classList.remove('shake');
-        email.classList.remove('shake');
-        password.classList.remove('shake');
-    }, 500);
-
-    if (isValid) {
-        document.querySelector('.register-info').classList.add('fade-out');
-        setTimeout(() => {
-            window.location.href = 'loginPage.html';
-        }, 500);
+    if (profileBtn) {
+        profileBtn.addEventListener('click', () => {
+            window.location.href = 'profile.html'; 
+        });
     }
 });
 
 
 // ------------------------------------ Login Page ----------------------------------
-document.querySelector('.acc-submitBtn').addEventListener('click', function (e) {
-    e.preventDefault();
+document.addEventListener('DOMContentLoaded', function() {
+    const loginBtn = document.querySelector('.login-submitBtn');
+    if (loginBtn) {
+        loginBtn.addEventListener('click', function(e) {
+            e.preventDefault();
 
-    const email = document.getElementById('email');
-    const password = document.getElementById('password');
-    const emailError = document.getElementById('email-error');
-    const passwordError = document.getElementById('password-error');
+            const email = document.getElementById('email');
+            const password = document.getElementById('password');
+            const emailError = document.getElementById('email-error');
+            const passwordError = document.getElementById('password-error');
 
-    let isValid = true;
+            let isValid = true;
 
-    if (email.value === '') {
-        email.classList.add('shake');
-        emailError.style.display = 'block';
-        isValid = false;
-    } else {
-        emailError.style.display = 'none'; 
+            if (email.value === '') {
+                email.classList.add('shake');
+                emailError.style.display = 'block';
+                isValid = false;
+            } else {
+                emailError.style.display = 'none'; 
+            }
+
+            if (password.value === '') {
+                password.classList.add('shake');
+                passwordError.style.display = 'block';
+                isValid = false;
+            } else {
+                passwordError.style.display = 'none'; 
+            }
+
+            setTimeout(() => {
+                email.classList.remove('shake');
+                password.classList.remove('shake');
+            }, 500);
+
+            if (isValid) {
+                document.querySelector('.login-info').classList.add('fade-out');
+                setTimeout(() => {
+                    window.location.href = 'index.html';
+                }, 500);
+            }
+        });
     }
+});
 
-    if (password.value === '') {
-        password.classList.add('shake');
-        passwordError.style.display = 'block';
-        isValid = false;
-    } else {
-        passwordError.style.display = 'none'; 
-    }
 
-    setTimeout(() => {
-        email.classList.remove('shake');
-        password.classList.remove('shake');
-    }, 500);
 
-    if (isValid) {
-        document.querySelector('.login-info').classList.add('fade-out');
-        setTimeout(() => {
-            window.location.href = 'index.html';
-        }, 500);
+// ------------------------------------ Register Page ----------------------------------
+document.addEventListener('DOMContentLoaded', function() {
+    const registerBtn = document.querySelector('.register-submitBtn');
+    if (registerBtn) {
+        registerBtn.addEventListener('click', (e) => {
+            e.preventDefault();
+
+            const name = document.getElementById('name');
+            const email = document.getElementById('email');
+            const password = document.getElementById('password');
+            const nameError = document.getElementById('name-error');
+            const emailError = document.getElementById('email-error');
+            const passwordError = document.getElementById('password-error');
+
+            let isValid = true;
+
+            if (name.value === '') {
+                name.classList.add('shake');
+                nameError.style.display = 'block';
+                isValid = false;
+            } else {
+                nameError.style.display = 'none';
+            }
+
+            if (email.value === '') {
+                email.classList.add('shake');
+                emailError.style.display = 'block';
+                isValid = false;
+            } else {
+                emailError.style.display = 'none';
+            }
+
+            if (password.value === '') {
+                password.classList.add('shake');
+                passwordError.style.display = 'block';
+                isValid = false;
+            } else {
+                passwordError.style.display = 'none';
+            }
+
+            setTimeout(() => {
+                name.classList.remove('shake');
+                email.classList.remove('shake');
+                password.classList.remove('shake');
+            }, 500);
+
+            if (isValid) {
+                document.querySelector('.register-info').classList.add('fade-out');
+                setTimeout(() => {
+                    window.location.href = 'login.html';
+                }, 500);
+            }
+        });
     }
 });
 
@@ -129,6 +145,8 @@ document.addEventListener('DOMContentLoaded', () => {
     const prevMonthButton = document.getElementById('prevMonth');
     const nextMonthButton = document.getElementById('nextMonth');
     const availableTimesTitle = document.querySelector('.available-times-title');
+    const logoutBtn = document.getElementById('logoutBtn');
+
 
     let currentDate = new Date();
     let selectedDate = null;
@@ -145,6 +163,15 @@ document.addEventListener('DOMContentLoaded', () => {
         } else {
             filterTimes();
         }
+    }
+
+    if (logoutBtn) {
+        logoutBtn.addEventListener('click', () => {
+            localStorage.removeItem('authToken'); 
+            sessionStorage.removeItem('user'); 
+
+            window.location.href = 'login.html';
+        });
     }
 
     function populateAvailableTimes(filteredTimes) {

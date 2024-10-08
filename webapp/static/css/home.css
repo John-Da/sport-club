@@ -1,0 +1,138 @@
+/* ---------------------------- Main Page ---------------------- */
+
+.padding-sides {
+    padding: 0 20px;
+}
+
+.home-header {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 1000;
+
+    width: 100%;
+    height: 4rem;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    background: var(--primary-color);
+    padding: 0 1.2rem;
+
+    align-content: center;
+    box-shadow: 0 2px 3px 2px rgba(0,0,0,0.1);
+}
+
+.home-header .logo {
+    width: 10rem;
+    height: 3.4rem;
+    /* color: #fff; */
+}
+
+#notificationBtn svg {
+    width: 30px;
+    height: 30px;
+}
+
+#notificationBtn {
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+    color: #fff;
+}
+
+@media (max-width: 600px) {
+    .header {
+        height: 4rem; 
+    }
+
+    .header .logo {
+        width: 100px;
+        height: 40px; 
+    }
+}
+
+
+.home-content {
+    max-width: 100%;
+    margin: 60px auto 0;
+    padding: 20px;
+    padding-bottom: 80px;
+}
+
+.home-content h2 {
+    margin-bottom: 1.2rem;
+    font-size: 2.1rem;
+    color: var(--darktext-color);
+}
+
+#mainpage {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 15px;
+    margin-bottom: 20px;
+}
+
+#mainpage .court {
+    background-color: #3498db;
+    border: none;
+    color: #fff;
+    padding: 20px 0;
+    text-align: center;
+    align-content: center;
+    text-decoration: none;
+    font-size: 1.6rem;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    border-radius: 5px;
+    box-sizing: 0 2px 4px rgba(0,0,0,0.1);
+    height: 9rem;
+}
+
+#mainpage .court:hover {
+    background-color: #2980b9;
+}
+
+.rules {
+    background-color: #fff;
+    padding: 15px;
+    border-radius: 5px;
+    box-shadow: 0 2px 4px rgba(0, 0,0, 0.1);
+}
+
+.rules h3 {
+    margin-top: 0;
+    color: var(--darktext-color);
+    font-size: 1.6rem;
+    margin-bottom: 1rem;
+    text-decoration: underline;
+}
+
+.rules h3 a {
+    margin-left: 10px;
+    font-size: 16px;
+    color: var(--dark-color);
+}
+
+
+#list-of-rules {
+    width: 100%; 
+    max-width: 400px; 
+}
+
+#rulesList {
+    max-height: 340px; 
+    overflow-y: auto; 
+    padding: 10px 10px 10px 20px;
+    margin: 0;
+    border: none; 
+    border-radius: 12px;
+    background-color: #f9f9f9; 
+}
+
+#rulesList li {
+    list-style-type: disc; 
+    margin-bottom: 10px;
+    letter-spacing: 0.45px;
+    line-height: 1.3;
+}

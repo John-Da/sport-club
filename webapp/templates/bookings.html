@@ -1,17 +1,12 @@
 {% extends 'base.html' %}
-
-{% block title %}
-Bookings
-{% endblock %}
-
+{% block title %} Booking {% endblock %}
 
 {% block content %}
+
     <header class="booking-header">
         <button class="header-back-btn" aria-label="Go back"><i class="fas fa-chevron-left"></i></button>
         <h1>Bookings</h1>
     </header>
-
-
 
     <!-- -------------------------- BOOKING CALENDAR ------------------------- -->
 
@@ -39,8 +34,7 @@ Bookings
             </div>
         </div>
     </div>
-
-
+    
     <!-- -------------------------- BOOKING TIMES ------------------------- -->
     <div class="booking-avialable-times">
         <h2 class="available-times-title">Avialable Times</h2>
@@ -77,11 +71,11 @@ Bookings
     <!-- -------------------------- NAVBAR ------------------------- -->
 
     <nav class="bottom-nav">
-        <a href="/mainpage" id="homeBtn" class="active">
+        <a href="/home" id="homeBtn">
             <i class="fas fa-home"></i>
             <span>Home</span>
         </a>
-        <a href="/bookings" id="bookingsBtn">
+        <a href="/booking" id="bookingsBtn" class="active">
             <i class="fas fa-calendar-alt"></i>
             <span>Bookings</span>
         </a>

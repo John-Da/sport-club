@@ -1,8 +1,6 @@
 {% extends 'base.html' %}
 
-{% block title %}
-Profile
-{% endblock %}
+{% block title %} Profile {% endblock %}
 
 {% block content %}
     <header class="profile-header">
@@ -34,15 +32,15 @@ Profile
     <!-- -------------------------- NAVBAR ------------------------- -->
 
     <nav class="bottom-nav">
-        <a href="/mainpage" id="homeBtn" class="active">
+        <a href="/home" id="homeBtn">
             <i class="fas fa-home"></i>
             <span>Home</span>
         </a>
-        <a href="/bookings" id="bookingsBtn">
+        <a href="/booking" id="bookingsBtn">
             <i class="fas fa-calendar-alt"></i>
             <span>Bookings</span>
         </a>
-        <a href="/profile" id="profileBtn">
+        <a href="/profile" id="profileBtn"  class="active">
             <i class="fas fa-user"></i>
             <span>Profile</span>
         </a>
