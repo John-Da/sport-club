@@ -9,29 +9,29 @@ document.addEventListener('DOMContentLoaded', () => {
 
     if (homeBtn) {
         homeBtn.addEventListener('click', () => {
-            window.location.href = 'index.html'; 
+            window.location.href = 'index.html';
         });
     }
 
     if (bookingsBtn) {
         bookingsBtn.addEventListener('click', () => {
-            window.location.href = 'bookings.html'; 
+            window.location.href = 'bookings.html';
         });
     }
 
     if (profileBtn) {
         profileBtn.addEventListener('click', () => {
-            window.location.href = 'profile.html'; 
+            window.location.href = 'profile.html';
         });
     }
 });
 
 
 // ------------------------------------ Login Page ----------------------------------
-document.addEventListener('DOMContentLoaded', function() {
+document.addEventListener('DOMContentLoaded', function () {
     const loginBtn = document.querySelector('.login-submitBtn');
     if (loginBtn) {
-        loginBtn.addEventListener('click', function(e) {
+        loginBtn.addEventListener('click', function (e) {
             e.preventDefault();
 
             const email = document.getElementById('email');
@@ -46,7 +46,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 emailError.style.display = 'block';
                 isValid = false;
             } else {
-                emailError.style.display = 'none'; 
+                emailError.style.display = 'none';
             }
 
             if (password.value === '') {
@@ -54,7 +54,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 passwordError.style.display = 'block';
                 isValid = false;
             } else {
-                passwordError.style.display = 'none'; 
+                passwordError.style.display = 'none';
             }
 
             setTimeout(() => {
@@ -75,7 +75,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
 
 // ------------------------------------ Register Page ----------------------------------
-document.addEventListener('DOMContentLoaded', function() {
+document.addEventListener('DOMContentLoaded', function () {
     const registerBtn = document.querySelector('.register-submitBtn');
     if (registerBtn) {
         registerBtn.addEventListener('click', (e) => {
@@ -167,8 +167,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
     if (logoutBtn) {
         logoutBtn.addEventListener('click', () => {
-            localStorage.removeItem('authToken'); 
-            sessionStorage.removeItem('user'); 
+            localStorage.removeItem('authToken');
+            sessionStorage.removeItem('user');
 
             window.location.href = 'login.html';
         });

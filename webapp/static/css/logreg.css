@@ -1,3 +1,26 @@
+/* --------------------------- Buttons ------------------------ */
+
+#submit {
+    width: 100%;
+    padding: 0.8rem;
+    background-color: var(--primary-color);
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+#submit:hover {
+    background-color: var(--btnHover-color);
+    transform: scale(1.05);
+}
+
+#submit:active {
+    transform: scale(0.95);
+}
+
 
 /* ---------------------------- Register Page ---------------------- */
 #registerPage {
@@ -97,27 +120,6 @@
     border-color: var(--primary-color);
     outline: none;
     transform: scale(1.02);
-}
-
-.acc-submitBtn {
-    width: 100%;
-    padding: 0.8rem;
-    background-color: var(--primary-color);
-    color: #fff;
-    border: none;
-    border-radius: 5px;
-    font-size: 1rem;
-    cursor: pointer;
-    transition: background-color 0.3s ease, transform 0.3s ease;
-}
-
-.acc-submitBtn:hover {
-    background-color: var(--btnHover-color);
-    transform: scale(1.05);
-}
-
-.acc-submitBtn:active {
-    transform: scale(0.95);
 }
 
 .login-inputs p {
