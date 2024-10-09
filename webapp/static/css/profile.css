@@ -30,6 +30,9 @@
     background-color: #fff;
     width: 100%;
     height: 100vh;
+    display: grid;
+    grid-template-rows: 12rem 1fr;
+    gap: 3px;
 }
 
 .profile-status-info {
@@ -46,7 +49,7 @@
 
     background-color: var(--primary-color);
     align-items: center;
-    margin: 30px 15px 1.3rem 15px;
+    margin: auto;
 }
 
 .profile-status-info img{
@@ -62,13 +65,17 @@
 
 .app-settings {
     width: 100%;
-    height: auto;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
 }
 
 .individual-settings{
     display: grid;
     grid-template-rows: repeat(4, 1fr);
-    margin: 6rem 0;
+    margin-top: 0.5rem;
+    margin-bottom: 6rem;
 }
 
 .settingsBtn{
@@ -88,23 +95,28 @@
     color: #fff;
 }
 
-
-
-#logoutBtn{
-    background-color: none;
-    border: none;
-    padding: 10px 20px;
-    border: none;
-    cursor: pointer;
+.logout-box{
     width: 100%;
-    height: 3rem;
-    margin-top: 5rem;
-    margin-bottom: 1rem;
-    font-size: 0.8rem;
-    font-weight: 700;
-    background-color: transparent;
+    height: 100%;
+    align-content: center;
+    text-align: center;
 }
 
-#logoutBtn:hover{
-    background-color: var(--border-color);
+.logout-box .logoutBtn{
+    text-decoration: none;
+    color: var(--primary-color);
+    border: none;
+    cursor: pointer;
+    padding: 1rem 6rem;
+    border-radius: 8px;
+    font-size: 1.1rem;
+    font-weight: 800;
+    letter-spacing: 0.8px;
+    background-color: transparent;
+    transition: all 0.3s ease;
+}
+
+.logout-box .logoutBtn:hover{
+    background-color: var(--primary-color);
+    color: #fff;
 }
