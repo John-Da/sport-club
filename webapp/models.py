@@ -12,7 +12,6 @@ class Customer(db.Model, UserMixin):  # Fix the spelling of 'Coustomers'
     date_joined = db.Column(db.DateTime, default=datetime.now)
 
     bookings = db.relationship("Booking", backref=db.backref("customer", lazy=True))  # Define relationship
-    courts = db.relationship("Court", backref=db.backref("customer", lazy=True))
 
     @property
     def password(self):

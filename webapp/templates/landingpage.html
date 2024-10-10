@@ -1,0 +1,62 @@
+{% extends 'base.html' %}
+
+{% block title %} News {% endblock %}
+
+{% block content %}
+<header class="landing-header">
+    <img src="../static/img/text2.PNG" alt="Club Logo" class="logo" width="100" height="60">
+    <nav>
+        <a href="/login" class="login-btn">Login</a>
+    </nav>
+</header>
+
+<main class="club-news-container">
+    <section class="current-news">
+        <header class="section-header">
+            <h2>Trending</h2>
+        </header>
+
+        <div class="news-content">
+            <article class="news-item">
+                <h3>Get Ready For Coming Events</h3>
+                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Cumque vero repudiandae, dolorem ut ex quam hic incidunt eveniet quisquam!</p>
+            </article>
+
+            <article class="news-item">
+                <h3>Exciting Club Updates</h3>
+                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Cumque vero repudiandae, dolorem ut ex quam hic incidunt eveniet quisquam!</p>
+            </article>
+
+            <article class="news-item">
+                <h3>New Facilities Opening Soon</h3>
+                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Cumque vero repudiandae, dolorem ut ex quam hic incidunt eveniet quisquam!</p>
+            </article>
+            <a href="#" class="read-more">Read more</a>
+        </div>
+    </section>
+
+    <section class="about-us">
+        <header class="section-header">
+            <h2>About Us</h2>
+        </header>
+
+        <div class="about-content">
+            <article class="about-item">
+                <h3>Our Mission</h3>
+                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Cumque vero repudiandae, dolorem ut ex quam hic incidunt eveniet quisquam!</p>
+            </article>
+
+            <article class="about-item">
+                <h3>Club History</h3>
+                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Cumque vero repudiandae, dolorem ut ex quam hic incidunt eveniet quisquam!</p>
+            </article>
+
+            <article class="about-item">
+                <h3>Membership Benefits</h3>
+                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Cumque vero repudiandae, dolorem ut ex quam hic incidunt eveniet quisquam!</p>
+            </article>
+            <a href="#" class="read-more">Read more</a>
+        </div>
+    </section>
+</main>
+{% endblock %}
