@@ -5,9 +5,15 @@ views = Blueprint("views", __name__)
 
 
 @views.route("/")
-@views.route('/landingpage')
+@views.route("/welcome")
+def welcome():
+    return render_template("welcome.html")
+
+
+@views.route("/landingpage")
 def landingpage():
     return render_template("landingpage.html")
+
 
 @views.route("/home")
 def home():
