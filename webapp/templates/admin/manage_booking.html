@@ -1,0 +1,93 @@
+{% extends 'admin_base.html' %}
+
+{% block title %} Bookings {% endblock %}
+{% block content %}
+
+<div id="bookings" class="section">
+    <h1>Bookings</h1>
+    <div class="insights">
+        <div class="recent-booking">
+            <h2>Recent Bookings</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Booking Token</th>
+                        <th>Court</th>
+                        <th>Customers</th>
+                        <th>Time</th>
+                        <th>Date</th>
+                        <th>Status</th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>012214</td>
+                        <td>Court A</td>
+                        <td>Mac</td>
+                        <td>4:00 PM</td>
+                        <td>9/10/2024</td>
+                        <td class="success">booked</td>
+                        <td class="primary"><a href="#" id="booking-details">Details</a></td>
+                    </tr>
+                    <tr>
+                        <td>012214</td>
+                        <td>Court B</td>
+                        <td>Muu</td>
+                        <td>6:00 PM</td>
+                        <td>9/10/2024</td>
+                        <td class="danger">canceled</td>
+                        <td class="primary"><a href="#" id="booking-details">Details</a></td>
+                    </tr>
+                    <tr>
+                        <td>012214</td>
+                        <td>Court A</td>
+                        <td>Pang</td>
+                        <td>9:00 AM</td>
+                        <td>9/10/2024</td>
+                        <td class="success">booked</td>
+                        <td class="primary"><a href="#" id="booking-details">Details</a></td>
+                    </tr>
+                    <tr>
+                        <td>012214</td>
+                        <td>Court D</td>
+                        <td>Boss</td>
+                        <td>7:00 PM</td>
+                        <td>9/10/2024</td>
+                        <td class="success">booked</td>
+                        <td class="primary"><a href="#" id="booking-details">Details</a></td>
+                    </tr>
+                    <tr>
+                        <td>012214</td>
+                        <td>Court E</td>
+                        <td>John</td>
+                        <td>4:00 PM</td>
+                        <td>9/10/2024</td>
+                        <td class="danger">canceled</td>
+                        <td class="primary"><a href="#" id="booking-details">Details</a></td>
+                    </tr>
+                </tbody>
+            </table>
+            <a href="#">Show All</a>
+        </div>
+
+        <div class="booking-details-info">
+            <h2>Customer - Mike</h2>
+            <div class="customer-details">
+                <form action="#">
+                    <input type="text" placeholder="Mike">
+                    <input type="text" placeholder="001123">
+                    <input type="text" placeholder="4:00 PM">
+                    <input type="text" placeholder="14/10/2024">
+                    <input type="text" placeholder="Booked">
+                    <input type="text" placeholder="Paid">
+                    <input type="text" placeholder="Checked">
+                    <a href="#" class="submit-btn">Submit</a>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+{% endblock %}

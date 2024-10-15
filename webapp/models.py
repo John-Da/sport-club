@@ -4,14 +4,15 @@ from datetime import datetime
 from werkzeug.security import generate_password_hash, check_password_hash
 
 
-class Customer(db.Model, UserMixin):  # Fix the spelling of 'Coustomers'
+class Customer(db.Model, UserMixin):
     id = db.Column(db.Integer, primary_key=True)
     email = db.Column(db.String(100), nullable=False, unique=True)
     username = db.Column(db.String(100))
     password_hash = db.Column(db.String(150))
     date_joined = db.Column(db.DateTime, default=datetime.now)
+    role = db.Column(db.String(50), default='user')
 
-    bookings = db.relationship("Booking", backref=db.backref("customer", lazy=True))  # Define relationship
+    bookings = db.relationship("Booking", backref=db.backref("customer", lazy=True)) 
 
     @property
     def password(self):
@@ -31,14 +32,14 @@ class Customer(db.Model, UserMixin):  # Fix the spelling of 'Coustomers'
 class Court(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     court_name = db.Column(db.String(100), nullable=False)
-    time = db.Column(db.String(100), nullable=False)  # Add this field
-    current_price = db.Column(db.Float, nullable=False)  # Add this field
-    previous_price = db.Column(db.Float, nullable=False)  # Add this field
-    in_use = db.Column(db.Float, nullable=False)  # Add this field
+    time = db.Column(db.String(100), nullable=False) 
+    current_price = db.Column(db.Float, nullable=False) 
+    previous_price = db.Column(db.Float, nullable=False) 
+    in_use = db.Column(db.Float, nullable=False) 
     court_picture = db.Column(db.String(2000), nullable=False)
     date_added = db.Column(db.DateTime, default=datetime.now())
 
-    bookings = db.relationship("Booking", backref=db.backref("booking", lazy=True))  # Define relationship
+    bookings = db.relationship("Booking", backref=db.backref("booking", lazy=True)) 
 
 
     def __str__(self):

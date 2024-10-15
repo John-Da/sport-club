@@ -1,0 +1,413 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Style+Script&display=swap');
+
+
+:root {
+    --primary-color: #3498db;
+    --btnHover-color: #2980b9;
+    --darkblue-color: #2c3e50;
+    --light-color: #fff;
+    --color-danger: #ff7782;
+    --color-success: #41f1b6;
+    --color-warning: #ffbb55;
+    --color-background: #f6f6f9;
+    --color-dark-varient: #677483;
+    --border-color: #e0e0e0;
+    --light-text-color: #7f8c8d;
+
+    --border-radius-1: 0.4rem;
+    --border-radius-2: 0.8rem;
+    --border-radius-3: 1.2rem;
+    --padding-1: 1.2rem;
+
+    --card-border-radius: 2rem;
+    --card-padding: 1.8rem;
+
+    --box-shadow: 0 0.5rem 1.5rem var(--border-color);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    text-decoration: none;
+    border: none;
+    list-style: none;
+    outline: none;
+}
+
+body {
+    font-family: 'Roboto';
+    color: var(--darkblue-color);
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    align-items: start;
+    gap: 1rem;
+    transition: all 300ms ease;
+}
+
+a {
+    color: var(--darkblue-color);
+}
+
+h1{
+    font-size: 1.8rem;
+    font-weight: 800;
+}
+
+h2{
+    font-size: 1.4rem;
+}
+
+h3{
+    font-size: 0.87rem;
+}
+
+h4{
+    font-size: 0.8rem;
+}
+
+h5{
+    font-size: 0.77rem;
+}
+
+small{
+    font-size: 0.75rem;
+}
+
+p{
+    color: var(--color-dark-varient);
+}
+
+b{
+    color: var(--darkblue-color);
+}
+
+img{
+    display: block;
+    width: 100%;
+}
+
+.profile-photo{
+    width: 2.8rem;
+    height: 2.8rem;
+    border-radius: 50%;
+    overflow: hidden;
+}
+
+.primary{
+    color: var(--primary-color);
+}
+
+.danger{
+    color: var(--color-danger);
+}
+
+.warning{
+    color: var(--color-warning);
+}
+
+.success{
+    color: var(--color-success);
+}
+
+/* _---------------------------- Side Bar Container -------------------------- */
+
+.sidemenubar {
+    width: 250px;
+    height: 100%;
+    background-color: var(--primary-color);
+    padding: 1.4rem 0rem 1.4rem 1.4rem;
+    transition: width 0.3s ease;
+    width: 250px;
+    position: relative;
+    overflow: hidden;
+}
+
+.sidemenubar .top {
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+    margin-bottom: 2rem;
+}
+
+.sidemenubar .top .logo {
+    position: relative;
+    height: 60px; /* Adjust based on your logo size */
+    padding: 10px;
+    display: flex;
+    align-items: center;
+}
+
+.sidemenubar .top .logo h2{
+    font-weight: 800;
+    color: var(--light-color);
+    margin-left: 10px;
+    transition: opacity 0.3s ease;
+}
+
+.sidemenubar .top .clOp span{
+    font-weight: 800;
+    font-size: 2.1rem;
+    color: var(--light-color);
+}
+
+.sidemenubar .top .clOp {
+    cursor: pointer;
+}
+
+.sidemenubar .top .logo img{
+    width: 4rem;
+    height: 4rem;
+    display: none;
+}
+
+.sidemenubar .navbar{
+    width: 100%;
+    height: 90vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+}
+
+.sidemenubar .navbar a{
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    height: 3.7rem;
+    width: 100%;
+    border-top-left-radius: 14px;
+    border-bottom-left-radius: 14px;
+    color: var(--light-color);
+}
+
+.sidemenubar .navbar a:last-child{
+    bottom: 2rem;
+    width: 100%;
+    position: absolute;
+}
+
+.sidemenubar .navbar a span{
+    font-size: 1.6rem;
+    transition: all 300ms ease;
+}
+
+.sidemenubar .navbar a.active{
+    background-color: #fff;
+    color: var(--primary-color);
+}
+
+.sidemenubar .navbar a.active::before{
+    content: '';
+    width: 10px;
+    height: 100%;
+    background-color: var(--color-dark-varient);
+    border-top-left-radius: 20px;
+    border-bottom-left-radius: 20px;
+}
+
+.sidemenubar .navbar a.active span{
+    color: var(--primary-color);
+    margin-left: calc(1rem - 3px);
+}
+
+.sidemenubar.sidebar-closed {
+    width: 60px; /* adjust as needed */
+}
+
+.navbar {
+    overflow: hidden;
+    transition: all 0.3s ease;
+}
+
+.navbar-closed .navbar a span:not(.material-symbols-rounded) {
+    display: none;
+    margin-left: 0;
+}
+
+.logo h2 {
+    position: absolute;
+    left: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+.logo h2 {
+    margin: 0;
+    opacity: 1;
+}
+
+.sidebar-closed .logo img {
+    opacity: 1;
+}
+
+.sidebar-closed .logo h2 {
+    opacity: 0;
+    transform: translateY(-50%) translateX(-100%);
+}
+
+.sidemenubar {
+    transition: width 0.3s ease;
+    width: 250px; /* adjust as needed */
+}
+
+.navbar {
+    transition: all 0.3s ease;
+}
+
+.navbar a {
+    transition: transform 0.2s ease;
+    display: block;
+    padding: 10px;
+    text-decoration: none;
+    color: #333; /* Adjust color as needed */
+}
+
+.navbar a:hover {
+    transform: translateY(-3px);
+    background-color: rgba(0, 0, 0, 0.05); /* Slight background change on hover */
+}
+
+.clOp {
+    cursor: pointer;
+    transition: transform 0.3s ease;
+    display: block; /* Ensure it's always visible */
+    position: absolute;
+    right: 10px;
+    top: 10px;
+    z-index: 10;
+}
+
+.clOp.rotate {
+    transform: rotate(180deg);
+}
+
+.sidemenubar.sidebar-closed {
+    width: 70px; /* adjust as needed */
+}
+
+.sidebar-closed .top .logo h2 {
+    opacity: 0;
+    width: 0;
+    overflow: hidden;
+}
+
+.hidden {
+    display: none;
+}
+
+.visible {
+    display: block;
+}
+
+
+/* _---------------------------- Contents Container -------------------------- */
+
+.info-contents {
+    width: 100%;
+    height: 100vh;
+}
+
+
+
+/* _---------------------------- Bookings Container -------------------------- */
+#bookings {
+    padding: 1rem;
+}
+
+#bookings .insights{
+    display: grid;
+    grid-template-columns: 1fr 30rem;
+    gap: 1rem;
+    margin-top: 2rem;
+    height: 88vh;
+}
+
+#bookings .recent-booking h2{
+    margin-bottom: 0.8rem;
+}
+
+#bookings .recent-booking table{
+    background-color: #fff;
+    border-radius: var(--card-border-radius);
+    width: 100%;
+    padding: var(--card-padding);
+    text-align: center;
+    box-shadow: var(--box-shadow);
+    transition: all 300ms ease;
+}
+
+#bookings .recent-booking table:hover{
+    box-shadow: none;
+}
+
+#bookings .recent-booking table tbody td{
+    height: 2.8rem;
+    border-bottom: 1px solid var(--border-color);
+    /* color: var(--color-dark-varient); */
+}
+
+#bookings .recent-booking table tbody tr:last-child td{
+    border: none;
+}
+
+#bookings .recent-booking a{
+    color: var(--primary-color);
+    margin: 1rem auto;
+    display: block;
+    text-align: center;
+}
+
+#bookings .booking-details-info{
+    /* background-color: #41f1b6; */
+    height: 100%;
+    padding: 1rem;
+}
+
+#bookings .booking-details-info h2{
+    margin-bottom: 1.4rem;
+}
+
+#bookings .booking-details-info .customer-details{
+    /* background-color: #7f8c8d; */
+    width: 100%;
+    height: 20rem;
+    display: block;
+    position: relative;
+}
+
+#bookings .booking-details-info .customer-details form{
+    /* background-color: #ffbb55; */
+    width: 100%;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1rem 20px;
+    margin-bottom: 1rem;
+}
+
+.customer-details form input{
+    height: 3rem;
+    padding: 0.6rem 1rem;
+    border-bottom: 2px solid var(--color-dark-varient);
+    background-color: transparent;
+    font-size: 1.1rem;
+}
+
+.customer-details .submit-btn{
+    width: 100%;
+    height: 2.6rem;
+    background-color: var(--primary-color);
+    color: var(--light-color);
+    padding: 0.5rem 1rem;
+    border-radius: var(--border-radius-1);
+    position: absolute;
+    bottom: 1px;
+    text-align: center;
+    font-size: 1rem;
+    font-weight: 600;
+    align-content: center;
+}

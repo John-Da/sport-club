@@ -1,0 +1,49 @@
+{% extends 'admin_base.html' %}
+
+{% block title %} Customers {% endblock %}
+{% block content %}
+
+<div id="customers" class="section">
+    <h1>This is a Customers Section</h1>
+    <div class="insights">
+        <div class="recent-booking">
+            <h2>Users:</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Username</th>
+                        <th>Email</th>
+                        <th>Role</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for user in users %}
+                    <tr>
+                        <td>{{ user.username }}</td>
+                        <td>{{ user.email }}</td>
+                        <td>{{ user.role }}</td>
+                        <td>
+                            {% if user.role != 'admin' %}
+                            <a href="{{ url_for('admin.promote_user', user_id=user.id) }}">Promote to Admin</a>
+                            {% endif %}
+                        </td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+        <div class="booking-details-info">
+            <h2>Promote User</h2>
+            <div class="customer-details">
+                <form method="POST">
+                    {{ form.hidden_tag() }}
+                    <p>{{ form.email.label }} {{ form.email() }}</p>
+                    <p>{{ form.submit() }}</p>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

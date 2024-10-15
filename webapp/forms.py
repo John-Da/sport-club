@@ -16,3 +16,7 @@ class LoginForm(FlaskForm):
     password = PasswordField("Password", validators=[DataRequired(), length(min=6)], render_kw={'placeholder' : 'Password'})
     submit = SubmitField("Login")
 
+
+class PromoteForm(FlaskForm):
+    email = StringField('Email', validators=[DataRequired()])
+    submit = SubmitField('Promote to Admin')

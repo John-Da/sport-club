@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link href="https://fonts.googleapis.com/icon?family=Material+Symbols+Rounded" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+
+    <title>Admin</title>
+</head>
+<body>
+    <div class="sidemenubar">
+        <div class="top">
+            <div class="logo">
+                <h2>PETAN<span style="color: crimson; font-family: 'Script';">Q</span></h2>
+            </div>
+            <div class="clOp" style="display: none;">
+                <span class="material-symbols-rounded">keyboard_double_arrow_left</span>
+            </div>
+        </div>
+        <div class="navbar">
+            <a href="#dashboard" data-section="dashboard">
+                <span class="material-symbols-rounded">space_dashboard</span>
+                <h3>Dashboard</h3>
+            </a>
+            <a href="#bookings" class="active" data-section="bookings">
+                <span class="material-symbols-rounded">receipt_long</span>
+                <h3>Bookings</h3>
+            </a>
+            <a href="#customers" data-section="customers">
+                <span class="material-symbols-rounded">groups</span>
+                <h3>Customers</h3>
+            </a>
+            <a href="#analytics" data-section="analytics">
+                <span class="material-symbols-rounded">show_chart</span>
+                <h3>Analytics</h3>
+            </a>
+            <a href="#messages" data-section="messages">
+                <span class="material-symbols-rounded">mail</span>
+                <h3>Messages</h3>
+                <!-- <span class="message-count">26</span> -->
+            </a>
+            <a href="#courts" data-section="courts">
+                <span class="material-symbols-rounded">flag_2</span>
+                <h3>Courts</h3>
+            </a>
+            <a href="#reports" data-section="reports">
+                <span class="material-symbols-rounded">report</span>
+                <h3>Reports</h3>
+            </a>
+            <a href="#settings" data-section="settings">
+                <span class="material-symbols-rounded">settings</span>
+                <h3>Settings</h3>
+            </a>
+            <a href="#logout" data-section="logout">
+                <span class="material-symbols-rounded">logout</span>
+                <h3>Logout</h3>
+            </a>
+        </div>
+    </div>
+
+
+    <div class="info-contents">
+
+        <div id="dashboard" class="section">
+            <h1>This is a Dashboard Section</h1>
+        </div>
+
+        <div id="bookings" class="section">
+            <h1>Bookings</h1>
+            <div class="insights">
+                <div class="recent-booking">
+                    <h2>Recent Bookings</h2>
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Booking Token</th>
+                                <th>Court</th>
+                                <th>Customers</th>
+                                <th>Time</th>
+                                <th>Date</th>
+                                <th>Status</th>
+                                <th></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>012214</td>
+                                <td>Court A</td>
+                                <td>Mac</td>
+                                <td>4:00 PM</td>
+                                <td>9/10/2024</td>
+                                <td class="success">booked</td>
+                                <td class="primary"><a href="#" id="booking-details">Details</a></td>
+                            </tr>
+                            <tr>
+                                <td>012214</td>
+                                <td>Court B</td>
+                                <td>Muu</td>
+                                <td>6:00 PM</td>
+                                <td>9/10/2024</td>
+                                <td class="danger">canceled</td>
+                                <td class="primary"><a href="#" id="booking-details">Details</a></td>
+                            </tr>
+                            <tr>
+                                <td>012214</td>
+                                <td>Court A</td>
+                                <td>Pang</td>
+                                <td>9:00 AM</td>
+                                <td>9/10/2024</td>
+                                <td class="success">booked</td>
+                                <td class="primary"><a href="#" id="booking-details">Details</a></td>
+                            </tr>
+                            <tr>
+                                <td>012214</td>
+                                <td>Court D</td>
+                                <td>Boss</td>
+                                <td>7:00 PM</td>
+                                <td>9/10/2024</td>
+                                <td class="success">booked</td>
+                                <td class="primary"><a href="#" id="booking-details">Details</a></td>
+                            </tr>
+                            <tr>
+                                <td>012214</td>
+                                <td>Court E</td>
+                                <td>John</td>
+                                <td>4:00 PM</td>
+                                <td>9/10/2024</td>
+                                <td class="danger">canceled</td>
+                                <td class="primary"><a href="#" id="booking-details">Details</a></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <a href="#">Show All</a>
+                </div>
+
+                <div class="booking-details-info">
+                    <h2>Customer - Mike</h2>
+                    <div class="customer-details">
+                        <form action="#">
+                            <input type="text" placeholder="Mike">
+                            <input type="text" placeholder="001123">
+                            <input type="text" placeholder="4:00 PM">
+                            <input type="text" placeholder="14/10/2024">
+                            <input type="text" placeholder="Booked">
+                            <input type="text" placeholder="Paid">
+                            <input type="text" placeholder="Checked">
+                            <a href="#" class="submit-btn">Submit</a>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div id="customers" class="section">
+            <h1>This is a Customers Section</h1>
+        </div>
+
+        <div id="analytics" class="section">
+            <h1>This is a Analytics Section</h1>
+        </div>
+
+        <div id="messages" class="section">
+            <h1>This is a Messages Section</h1>
+        </div>
+
+        <div id="courts" class="section">
+            <h1>This is a Courts Section</h1>
+        </div>
+
+        <div id="reports" class="section">
+            <h1>This is a Report Section</h1>
+        </div>
+
+        <div id="settings" class="section">
+            <h1>This is a Settings Section</h1>
+        </div>
+
+        <div id="logout" class="section">
+            <h1>This is a Logout Section</h1>
+        </div>
+    </div>
+
+
+
+    <script src="script.js"></script>
+</body>
+</html>
