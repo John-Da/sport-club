@@ -9,24 +9,24 @@ views = Blueprint("views", __name__)
 @views.route("/welcome")
 def welcome():
     user_role = current_user.role if current_user.is_authenticated else None
-    return render_template("/startupPages/welcome.html", role=user_role)
+    return render_template("welcome.html", role=user_role)
 
 
 @views.route("/landingpage")
 def landingpage():
-    return render_template("/startupPages/landingpage.html")
+    return render_template("landingpage.html")
 
 
-@views.route("/home")
+@views.route("/user/home")
 def home():
-    return render_template("home.html")
+    return render_template("end_user/home.html")
 
 
-@views.route("/booking")
+@views.route("/user/booking")
 def booking():
-    return render_template("bookings.html")
+    return render_template("end_user/bookings.html")
 
 
-@views.route("/profile")
+@views.route("/user/profile")
 def profile():
-    return render_template("profile.html")
+    return render_template("end_user/profile.html")

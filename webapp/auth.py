@@ -1,4 +1,4 @@
-from flask import Blueprint, render_template, flash, redirect
+from flask import Blueprint, render_template, flash, redirect, url_for
 from .forms import LoginForm, SignUpForm
 from flask_login import login_user, login_required, logout_user
 from .models import Customer
@@ -54,7 +54,7 @@ def login():
         if customer:
             if customer.verify_password(password=password):
                 login_user(customer)
-                return redirect('/home')
+                return redirect(url_for('views.home'))
             else:
                 flash("Incorrect Email or Password")
         else:

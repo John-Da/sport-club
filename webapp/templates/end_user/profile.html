@@ -1,4 +1,4 @@
-{% extends 'user_base.html' %}
+{% extends 'end_user/user_base.html' %}
 
 {% block title %} Profile {% endblock %}
 
@@ -30,22 +30,6 @@
             </div>
         </div>
     </div>
-
-    <!-- -------------------------- NAVBAR ------------------------- -->
-
-    <nav class="bottom-nav">
-        <a href="/home" id="homeBtn">
-            <i class="fas fa-home"></i>
-            <span>Home</span>
-        </a>
-        <a href="/booking" id="bookingsBtn">
-            <i class="fas fa-calendar-alt"></i>
-            <span>Bookings</span>
-        </a>
-        <a href="/profile" id="profileBtn"  class="active">
-            <i class="fas fa-user"></i>
-            <span>Profile</span>
-        </a>
-    </nav>
+    {% include 'navbar.html' %}
 
 {% endblock %}
