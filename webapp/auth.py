@@ -1,12 +1,11 @@
+# auth.py
 from flask import Blueprint, render_template, flash, redirect, url_for
 from .forms import LoginForm, SignUpForm
-from flask_login import login_user, login_required, logout_user
+from flask_login import login_user, login_required, logout_user, current_user
 from .models import Customer
 from . import db
 
-
 auth = Blueprint("auth", __name__)
-
 
 @auth.route("/register", methods=["GET", "POST"])
 def register():
@@ -22,14 +21,13 @@ def register():
             new_customer = Customer()
             new_customer.email = email
             new_customer.username = username
-            new_customer.password = password2
+            new_customer.password = password2 
 
             try:
                 db.session.add(new_customer)
                 db.session.commit()
                 flash("Account Created Successfully, You can now Login")
                 return redirect('/login')
-            
             except Exception as e:
                 print(f"Error: {e}")
                 flash("Account Not Created! Email already exists")
@@ -41,28 +39,25 @@ def register():
 
     return render_template("register.html", form=form)
 
-
 @auth.route("/login", methods=["GET", "POST"])
 def login():
     form = LoginForm()
 
-    if form.validate_on_submit:
+    if form.validate_on_submit():
         email = form.email.data
         password = form.password.data
 
         customer = Customer.query.filter_by(email=email).first()
-        if customer:
-            if customer.verify_password(password=password):
-                login_user(customer)
-                return redirect(url_for('views.home'))
+        if customer and customer.verify_password(password):  
+            login_user(customer)
+            if customer.role == 'admin':
+                return redirect(url_for('admin.admin_dashboard'))
             else:
-                flash("Incorrect Email or Password")
+                return redirect(url_for('views.home'))
         else:
-            flash("Account does not exist. Please Sign Up.")
-
+            flash("Incorrect Email or Password")
 
     return render_template("login.html", form=form)
-
 
 @auth.route('/logout', methods=['GET', 'POST'])
 @login_required

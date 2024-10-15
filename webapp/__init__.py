@@ -1,6 +1,7 @@
-from flask import Flask
+from flask import Flask, flash
 from flask_sqlalchemy import SQLAlchemy
 from flask_login import LoginManager
+from werkzeug.security import generate_password_hash
 
 db = SQLAlchemy()
 DB_NAME = "database.sqlite3"
@@ -26,10 +27,12 @@ def create_app():
     from .views import views
     from .auth import auth
     from .admin import admin
+    from .user import user
 
     app.register_blueprint(views, url_prefix="/")
-    app.register_blueprint(auth, url_prefix="/")
-    app.register_blueprint(admin, url_prefix="/")
+    app.register_blueprint(auth, url_prefix="/auth")
+    app.register_blueprint(admin, url_prefix="/admin")
+    app.register_blueprint(user, url_prefix="/user")
 
     with app.app_context():
         inspector = db.inspect(db.engine)
@@ -40,5 +43,15 @@ def create_app():
             if "role" not in [col["name"] for col in columns]:
                 db.engine.execute('ALTER TABLE customer ADD COLUMN role VARCHAR(50) DEFAULT "user"')
                 print("Added 'role' column to the customer table.")
+
+        admin_email = 'admin@petanq.com'
+        adminpass = 'admin12345'
+        admin = Customer.query.filter_by(email=admin_email).first()
+        if not admin:
+            hashpass = generate_password_hash(password=adminpass)
+            new_admin = Customer(email=admin_email, username="admin", password=hashpass, role="admin")
+            db.session.add(new_admin)
+            db.session.commit()
+            flash('Admin account created.')
         
     return app

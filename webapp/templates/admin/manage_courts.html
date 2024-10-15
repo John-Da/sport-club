@@ -1,11 +1,35 @@
 {% extends 'admin/admin_base.html' %}
 
-
 {% block title %} Courts {% endblock %}
 {% block content %}
 
 <div id="courts" class="section">
-    <h1>This is a Courts Section</h1>
+    <h1>Courts</h1>
+    <div class="insights">
+        <div class="recent-booking">
+            <h2>Manage Courts</h2>
+            <table>
+                <tr>
+                    <th>Court Name</th>
+                    <th>Current Price</th>
+                    <th>Previous Price</th>
+                    <th>Time</th>
+                    <th>Actions</th>
+                </tr>
+                {% for court in courts %}
+                <tr>
+                    <td>{{ court.court_name }}</td>
+                    <td>{{ court.current_price }}</td>
+                    <td>{{ court.previous_price }}</td>
+                    <td>{{ court.time }}</td>
+                    <td>
+                        <!-- Add buttons for editing/deleting courts here -->
+                    </td>
+                </tr>
+                {% endfor %}
+            </table>
+        </div>
+    </div>
 </div>
 
 {% endblock %}

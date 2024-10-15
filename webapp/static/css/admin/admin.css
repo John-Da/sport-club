@@ -182,6 +182,7 @@ img{
     border-top-left-radius: 14px;
     border-bottom-left-radius: 14px;
     color: var(--light-color);
+    margin: 3px 0;
 }
 
 .sidemenubar .navbar a:last-child{
