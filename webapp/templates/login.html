@@ -1,4 +1,8 @@
-{% extends 'end_user/user_base.html' %}
+{% if role == 'admin' %}
+    {% extends 'admin/admin_base.html' %}
+{% else %}
+    {% extends 'end_user/user_base.html' %}
+{% endif %}
 
 {% block title %} Log In {% endblock %}
 
@@ -13,7 +17,7 @@
                 {{ form.password }}
 
                 {{ form.submit() }}
-                <p>Create a new account? <a href="/register" class="regiBtn">Register</a></p>
+                <p>Create a new account? <a href="/auth/register" class="regiBtn">Register</a></p>
                 <a href="#" class="forgotBtn">Forgot Password</a> 
             </form>
         </div>

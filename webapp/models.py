@@ -29,15 +29,15 @@ class Customer(db.Model, UserMixin):
         return "<Customer %r>" % self.id
 
 
+
 class Court(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     court_name = db.Column(db.String(100), nullable=False)
-    time = db.Column(db.String(100), nullable=False) 
-    current_price = db.Column(db.Float, nullable=False) 
-    previous_price = db.Column(db.Float, nullable=False) 
-    in_use = db.Column(db.Float, nullable=False) 
-    court_picture = db.Column(db.String(2000), nullable=False)
-    date_added = db.Column(db.DateTime, default=datetime.now())
+    date = db.Column(db.Date, nullable=False)
+    time = db.Column(db.Time, nullable=False)
+    duration = db.Column(db.Integer, nullable=False)  # in hours
+    current_price = db.Column(db.Float, nullable=False)
+    previous_price = db.Column(db.Float)
 
     bookings = db.relationship("Booking", backref=db.backref("booking", lazy=True)) 
 
@@ -48,15 +48,12 @@ class Court(db.Model):
 
 class Booking(db.Model):
     id = db.Column(db.Integer, primary_key=True)
+    date = db.Column(db.DateTime, nullable=False)
+    token = db.Column(db.String(16), unique=True, nullable=False)  
+    status = db.Column(db.String(50), default="Booked")
+    customer_id = db.Column(db.Integer, db.ForeignKey("customer.id"), nullable=False)
+    court_id = db.Column(db.Integer, db.ForeignKey("court.id"), nullable=False)
 
-    time_booked = db.Column(db.Time, nullable=False)
-    date_booked = db.Column(db.Date, nullable=False)
-    status = db.Column(db.String(100), nullable=False)
-    payment_id = db.Column(db.String(1000), nullable=False)
-
-    customer_link = db.Column(db.Integer, db.ForeignKey("customer.id"), nullable=False)
-    court_link = db.Column(db.Integer, db.ForeignKey("court.id"), nullable=False)
-
-    def __str__(self):
-        return "<Booking %r>" % self.id
+    def __repr__(self):
+        return f'<Booking {self.id}>'
 

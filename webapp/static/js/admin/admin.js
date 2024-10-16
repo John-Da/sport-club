@@ -52,5 +52,5 @@ document.addEventListener('DOMContentLoaded', function() {
     });
 
     // Initially show the dashboard
-    switchSection('bookings');
+    switchSection('dashboard');
 });

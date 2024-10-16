@@ -22,51 +22,17 @@
                     </tr>
                 </thead>
                 <tbody>
+                    {% for booking in bookings %}
                     <tr>
-                        <td>012214</td>
-                        <td>Court A</td>
-                        <td>Mac</td>
-                        <td>4:00 PM</td>
-                        <td>9/10/2024</td>
-                        <td class="success">booked</td>
+                        <td>{{ booking.token }}</td>
+                        <td>{{ booking.court_name }}</td>
+                        <td>{{ booking.username }}</td>
+                        <td>{{ booking.time }} PM</td>
+                        <td>{{ booking.date }}</td>
+                        <td class="success">{{ booking.status }}</td>
                         <td class="primary"><a href="#" id="booking-details">Details</a></td>
                     </tr>
-                    <tr>
-                        <td>012214</td>
-                        <td>Court B</td>
-                        <td>Muu</td>
-                        <td>6:00 PM</td>
-                        <td>9/10/2024</td>
-                        <td class="danger">canceled</td>
-                        <td class="primary"><a href="#" id="booking-details">Details</a></td>
-                    </tr>
-                    <tr>
-                        <td>012214</td>
-                        <td>Court A</td>
-                        <td>Pang</td>
-                        <td>9:00 AM</td>
-                        <td>9/10/2024</td>
-                        <td class="success">booked</td>
-                        <td class="primary"><a href="#" id="booking-details">Details</a></td>
-                    </tr>
-                    <tr>
-                        <td>012214</td>
-                        <td>Court D</td>
-                        <td>Boss</td>
-                        <td>7:00 PM</td>
-                        <td>9/10/2024</td>
-                        <td class="success">booked</td>
-                        <td class="primary"><a href="#" id="booking-details">Details</a></td>
-                    </tr>
-                    <tr>
-                        <td>012214</td>
-                        <td>Court E</td>
-                        <td>John</td>
-                        <td>4:00 PM</td>
-                        <td>9/10/2024</td>
-                        <td class="danger">canceled</td>
-                        <td class="primary"><a href="#" id="booking-details">Details</a></td>
-                    </tr>
+                    {% endfor %}
                 </tbody>
             </table>
             <a href="#">Show All</a>
@@ -75,14 +41,16 @@
         <div class="booking-details-info">
             <h2>Customer - Mike</h2>
             <div class="customer-details">
-                <form action="#">
-                    <input type="text" placeholder="Mike">
-                    <input type="text" placeholder="001123">
-                    <input type="text" placeholder="4:00 PM">
-                    <input type="text" placeholder="14/10/2024">
-                    <input type="text" placeholder="Booked">
-                    <input type="text" placeholder="Paid">
-                    <input type="text" placeholder="Checked">
+                <form action="#" method="POST">
+                    {% for detail in bookings %}
+                    <input type="text" value='{{ detail.username }}'>
+                    <input type="text" value='{{ detail.token }}'>
+                    <input type="text" value='{{ detail.time }}'>
+                    <input type="text" value='{{ detail.date }}'>
+                    <input type="text" value='{{ detail.status }}'>
+                    <input type="text" value='{{ detail.payment }}'>
+                    <input type="text" value='{{ detail.is_checked }}'>
+                    {% endfor %}
                     <a href="#" class="submit-btn">Submit</a>
                 </form>
             </div>

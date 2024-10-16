@@ -27,7 +27,7 @@ def register():
                 db.session.add(new_customer)
                 db.session.commit()
                 flash("Account Created Successfully, You can now Login")
-                return redirect('/login')
+                return redirect(url_for('auth.login'))
             except Exception as e:
                 print(f"Error: {e}")
                 flash("Account Not Created! Email already exists")
@@ -53,9 +53,10 @@ def login():
             if customer.role == 'admin':
                 return redirect(url_for('admin.admin_dashboard'))
             else:
-                return redirect(url_for('views.home'))
+                return redirect(url_for('user.dashboard'))
         else:
             flash("Incorrect Email or Password")
+            return redirect(url_for('auth.login'))
 
     return render_template("login.html", form=form)
 

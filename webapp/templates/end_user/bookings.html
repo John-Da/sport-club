@@ -64,12 +64,18 @@
         
         <div class="booking-times-info">
             <div class="booking-times-list" id="booking-times-list"> 
+                {% for court in courts %}
+                    <div class="court-item">
+                        <h3 class="item-title">{{ court.court_name }}</h3>
+                        <p class="item-time info">Date: {{ court.date }}</p>
+                        <p class="item-time info">Time: {{ court.time }}</p>
+                        <p class="item-duration info">Duration: {{ court.duration }} hour(s)</p>
+                        <p class="item-price info">Price: ${{ court.current_price }}</p>
+                    </div>
+                {% endfor %}
             </div>
         </div>
     </div>
-
-
-    {% include 'navbar.html' %}
 
 
 {% endblock %}
