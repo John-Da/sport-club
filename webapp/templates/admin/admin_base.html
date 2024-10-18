@@ -15,7 +15,6 @@
     <link rel="stylesheet" href="{{ url_for('static', filename='css/admin/welcome.css') }}">
 
 
-    <!-- <script type="module" src="{{url_for('static', filename='js/admin/admin.js')}}"></script> -->
 
 
 <!-- ==================================== Contents ======================================== -->
@@ -29,6 +28,9 @@
         {% block content %} 
         {% endblock %}
     </div>
+
+
+    <script src="{{ url_for('static', filename='js/admin/admin.js') }}"></script>
 
 </body>
 </html>

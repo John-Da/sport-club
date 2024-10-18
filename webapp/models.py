@@ -33,8 +33,8 @@ class Customer(db.Model, UserMixin):
 class Court(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     court_name = db.Column(db.String(100), nullable=False)
-    date = db.Column(db.Date, nullable=False)
-    time = db.Column(db.Time, nullable=False)
+    date = db.Column(db.String(20), nullable=False)
+    time = db.Column(db.String(20), nullable=False)
     duration = db.Column(db.Integer, nullable=False)  # in hours
     current_price = db.Column(db.Float, nullable=False)
     previous_price = db.Column(db.Float)

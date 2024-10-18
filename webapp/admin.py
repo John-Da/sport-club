@@ -56,14 +56,10 @@ def manage_courts():
         current_price = float(request.form['current_price'])
         previous_price = float(request.form.get('previous_price', 0))
 
-        try:
-            date = datetime.strptime(date_str, '%Y-%m-%d').date()
-        except ValueError:
-            flash('Invalid date format. Please use YYYY-MM-DD format.')
-            return redirect(url_for('admin.manage_courts'))
 
-        new_court = Court(court_name=court_name, date=date, time=time,
+        new_court = Court(court_name=court_name, date=date_str, time=time,
                           duration=duration, current_price=current_price, previous_price=previous_price)
+        print(new_court)
         try:
             db.session.add(new_court)
             db.session.commit()
@@ -162,25 +158,25 @@ def logout():
     return redirect("/landingpage")
 
 
-# @admin.route("/promote", methods=["GET", "POST"])
-# @login_required
-# def promote_user():
-#     if current_user.role != "admin":
-#         flash("You are not authorized to perform this action.", "error")
-#         return redirect(url_for("views.landingpage"))
+@admin.route("/promote", methods=["GET", "POST"])
+@login_required
+def promote_user():
+    if current_user.role != "admin":
+        flash("You are not authorized to perform this action.", "error")
+        return redirect(url_for("views.landingpage"))
 
-#     form = PromoteForm()
-#     if form.validate_on_submit():
-#         email = form.email.data
-#         user = Customer.query.filter_by(email=email).first()
+    form = PromoteForm()
+    if form.validate_on_submit():
+        email = form.email.data
+        user = Customer.query.filter_by(email=email).first()
 
-#         if not user:
-#             flash("User not found.", "error")
-#             return redirect(url_for("admin.admin_dashboard"))
+        if not user:
+            flash("User not found.", "error")
+            return redirect(url_for("admin.admin_dashboard"))
 
-#         user.role = "admin"
-#         db.session.commit()
-#         flash(f"{user.username} has been promoted to admin.", "success")
-#         return redirect(url_for("admin.admin_dashboard"))
+        user.role = "admin"
+        db.session.commit()
+        flash(f"{user.username} has been promoted to admin.", "success")
+        return redirect(url_for("admin.admin_dashboard"))
 
-#     return render_template("admin/promote_user.html", form=form)
+    return render_template("admin/promote_user.html", form=form)

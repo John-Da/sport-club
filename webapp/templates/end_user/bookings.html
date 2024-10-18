@@ -11,7 +11,7 @@
 
     <!-- -------------------------- BOOKING CALENDAR ------------------------- -->
 
-    <div class="booking-calendar-container">
+    <div class="booking-calendar-container" method="POST">
         <div class="inner-calendar">
             <h2>Select Date</h2>
             <div id="booking-calendar" class="booking-calendar">
@@ -40,38 +40,41 @@
     <div class="booking-avialable-times">
         <h2 class="available-times-title">Avialable Times</h2>
         <div class="filter-section">
-            <div class="court-filer">
-                <select id="courtFilter">
+            <form method="GET" action="{{ url_for('user.bookings') }}" class="court-filter">
+                <select id="courtFilter" name="court">
                     <option value="all">All Courts</option>
-                    <option value="Court A">Court A</option>
-                    <option value="Court B">Court B</option>
-                    <option value="Court C">Court C</option>
-                    <option value="Court D">Court D</option>
-                    <option value="Court E">Court E</option>
+                    {% for court in unique_courts %}
+                    <option value="{{ court }}">{{ court }}</option>
+                    {% endfor %}
                 </select>
-            </div>
-
-            <div class="duration-filter">
-                <select id="durationFilter">
+            
+                <select id="durationFilter" name="duration">
                     <option value="all">All Durations</option>
-                    <option value="1 hr(s)">1 hr(s)</option>
-                    <option value="2 hr(s)">2 hr(s)</option>
+                    {% for duration in unique_durations %}
+                    <option value="{{ duration }}">{{ duration }} hr(s)</option>
+                    {% endfor %}
                 </select>
-            </div>
-        
-            <button id="filterBtn">Filter</button>
-        </div>
+            
+                <button id="filterBtn" type="submit">Filter</button>
+            </form>  
+        </div>      
         
         <div class="booking-times-info">
             <div class="booking-times-list" id="booking-times-list"> 
                 {% for court in courts %}
-                    <div class="court-item">
-                        <h3 class="item-title">{{ court.court_name }}</h3>
-                        <p class="item-time info">Date: {{ court.date }}</p>
-                        <p class="item-time info">Time: {{ court.time }}</p>
-                        <p class="item-duration info">Duration: {{ court.duration }} hour(s)</p>
-                        <p class="item-price info">Price: ${{ court.current_price }}</p>
-                    </div>
+                    {% if (not selected_court or selected_court == 'all' or court.court_name == selected_court) and 
+                        (not selected_duration or selected_duration == 'all' or court.duration == selected_duration) and
+                        (not selected_date or court.date == selected_date) %}
+                        <div class="court-item" data-court="{{ court.court_name }}" data-duration="{{ court.duration }}">
+                            <h3 class="item-title">{{ court.court_name }}</h3>
+                            <p class="item-time info">Date: {{ court.date }}</p>
+                            <p class="item-time info">Time: {{ court.time }}</p>
+                            <p class="item-duration info">Duration: {{ court.duration }} hour(s)</p>
+                            <p class="item-price info">Price: {{ court.current_price }} Baht</p>
+                        </div>
+                    {% else %}
+                        <p>No available times match your selection.</p>
+                    {% endif %}
                 {% endfor %}
             </div>
         </div>
