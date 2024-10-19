@@ -17,7 +17,7 @@
     width: 2rem;
 }
 
-.confirmBooking-header-title{
+.confirmBooking-header-title {
     text-align: left;
     width: 70%;
     font-size: 1.5rem;
@@ -29,18 +29,18 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: space-evenly;
+    justify-content: flex-start; /* Changed to flex-start for better alignment */
     gap: 1rem;
     width: 100%;
     height: 100vh;
-    padding: 1rem;
     background-color: #f9f9f9;
 }
 
 .bookingform_container form {
     width: 100%;
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
+    height: 100%;
+    display: flex;
+    flex-direction: column; /* Changed from grid to flex */
     gap: 1.2rem;
     padding: 1rem;
     background-color: #fff;
@@ -48,18 +48,12 @@
     box-shadow: 0 4px 8px var(--shadow-color);
 }
 
-@media (max-width: 768px) {
-    .bookingform_container form {
-        grid-template-columns: 1fr;
-    }
-}
-
 .bookingform_container form .formItems {
     display: flex;
     flex-direction: column;
     align-items: start;
     justify-content: center;
-    margin-bottom: 1rem;
+    margin-bottom: 0.5rem;
 }
 
 .bookingform_container form .formItems label {
@@ -87,16 +81,16 @@
 
 .bookingform_container .formbtn {
     display: flex;
-    justify-content: space-evenly;
+    justify-content: space-between; /* Change to space-between for better button placement */
     align-items: center;
     width: 100%;
-    margin-top: 1rem;
+    margin-top: 0; /* Remove margin-top for better spacing */
 }
 
 .formbtn button {
     font-size: 1rem;
-    padding: 0.5rem 1rem;
-    width: 100px;
+    padding: 0.7rem 1rem;
+    width: 45%; /* Adjusted for better spacing on mobile */
     border: none;
     box-shadow: 0 2px 4px var(--shadow-color);
     background-color: var(--primary-color);
@@ -113,4 +107,15 @@
 
 .formbtn button:hover {
     background-color: var(--btnHover-color);
+}
+
+/* Media Queries for additional mobile adjustments */
+@media (max-width: 480px) {
+    .confirmBooking-header-title {
+        font-size: 1.2rem; /* Adjust title font size */
+    }
+    .formbtn button {
+        width: 40%; /* Full width buttons on very small screens */
+        margin-top: 0.5rem; /* Add spacing between buttons */
+    }
 }

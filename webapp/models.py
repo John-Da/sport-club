@@ -48,12 +48,25 @@ class Court(db.Model):
 
 class Booking(db.Model):
     id = db.Column(db.Integer, primary_key=True)
-    date = db.Column(db.DateTime, nullable=False)
-    token = db.Column(db.String(16), unique=True, nullable=False)  
+    date = db.Column(db.Date, nullable=False)
+    time = db.Column(db.String(10), nullable=False)
+    court_name = db.Column(db.String(100), nullable=False)
+    duration = db.Column(db.Integer, nullable=False)
+    price = db.Column(db.Float, nullable=False)
+    token = db.Column(db.String(16), unique=True, nullable=False)
     status = db.Column(db.String(50), default="Booked")
-    customer_id = db.Column(db.Integer, db.ForeignKey("customer.id"), nullable=False)
+    user_id = db.Column(db.Integer, db.ForeignKey("customer.id"), nullable=False)
     court_id = db.Column(db.Integer, db.ForeignKey("court.id"), nullable=False)
-
+    
     def __repr__(self):
         return f'<Booking {self.id}>'
+
+
+    
+class Rules(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    rule_description = db.Column(db.String(3000))
+
+    def __repr__(self):
+        return f'<Rules {self.id}>'
 

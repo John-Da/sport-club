@@ -37,7 +37,7 @@
     </div>
     
     <!-- -------------------------- BOOKING TIMES ------------------------- -->
-    <div class="booking-avialable-times">
+    <div class="booking-avialable-times" method="GET">
         <h2 class="available-times-title">Avialable Times</h2>
         <div class="filter-section">
             <form method="GET" action="{{ url_for('user.bookings') }}" class="court-filter">
@@ -61,24 +61,31 @@
         
         <div class="booking-times-info">
             <div class="booking-times-list" id="booking-times-list"> 
-                {% for court in courts %}
-                    {% if (not selected_court or selected_court == 'all' or court.court_name == selected_court) and 
-                        (not selected_duration or selected_duration == 'all' or court.duration == selected_duration) and
-                        (not selected_date or court.date == selected_date) %}
-                        <div class="court-item" data-court="{{ court.court_name }}" data-duration="{{ court.duration }}">
+                {% if not courts %}
+                    <p>There is no Available Court at the moment.</p>
+                {% else %}
+                    {% for court in courts %}
+                    <a href="{{ url_for('user.book_court', 
+                    court_id=court.id,
+                    date=court.date,
+                    court_name=court.court_name,
+                    duration=court.duration,
+                    time=court.time,
+                    price=court.current_price) }}" 
+                    class="court-item">
                             <h3 class="item-title">{{ court.court_name }}</h3>
                             <p class="item-time info">Date: {{ court.date }}</p>
                             <p class="item-time info">Time: {{ court.time }}</p>
                             <p class="item-duration info">Duration: {{ court.duration }} hour(s)</p>
                             <p class="item-price info">Price: {{ court.current_price }} Baht</p>
-                        </div>
-                    {% else %}
-                        <p>No available times match your selection.</p>
-                    {% endif %}
-                {% endfor %}
+                        </a> 
+                    {% endfor %}
+                {% endif %}
             </div>
         </div>
     </div>
+
+    
 
 
 {% endblock %}

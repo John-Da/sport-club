@@ -1,10 +1,16 @@
-document.addEventListener("DOMContentLoaded", function() {
-    const flashMessages = document.getElementById("flash-messages");
-    
-    if (flashMessages) {
-        // Set a timeout to hide the flash messages after 3 seconds
-        setTimeout(() => {
-            flashMessages.style.display = "none"; // Hide the messages
-        }, 3000); // 3000 milliseconds = 3 seconds
-    }
+// Add this to your base template or a separate JS file
+document.addEventListener('DOMContentLoaded', function() {
+    // Make flash messages dismissible
+    document.querySelectorAll('.alert').forEach(function(alert) {
+        alert.addEventListener('click', function() {
+            alert.style.display = 'none';
+        });
+    });
+
+    // Automatically remove flash messages after 5 seconds
+    setTimeout(function() {
+        document.querySelectorAll('.alert').forEach(function(alert) {
+            alert.style.display = 'none';
+        });
+    }, 5000);
 });

@@ -1,62 +1,88 @@
 {% extends 'admin/admin_base.html' %}
 
+{% block title %}Bookings{% endblock %}
 
-{% block title %} Bookings {% endblock %}
 {% block content %}
-
-<div id="bookings" class="section">
-    <h1>Bookings</h1>
-    <div class="insights">
-        <div class="recent-booking">
-            <h2>Recent Bookings</h2>
-            <table>
-                <thead>
-                    <tr>
-                        <th>Booking Token</th>
-                        <th>Court</th>
-                        <th>Customers</th>
-                        <th>Time</th>
-                        <th>Date</th>
-                        <th>Status</th>
-                        <th></th>
-                    </tr>
-                </thead>
-                <tbody>
-                    {% for booking in bookings %}
-                    <tr>
-                        <td>{{ booking.token }}</td>
-                        <td>{{ booking.court_name }}</td>
-                        <td>{{ booking.username }}</td>
-                        <td>{{ booking.time }} PM</td>
-                        <td>{{ booking.date }}</td>
-                        <td class="success">{{ booking.status }}</td>
-                        <td class="primary"><a href="#" id="booking-details">Details</a></td>
-                    </tr>
-                    {% endfor %}
-                </tbody>
-            </table>
-            <a href="#">Show All</a>
+<div class="p-4 max-w-full">
+    <h1 class="text-2xl font-bold mb-6">Bookings</h1>
+    
+    <div class="grid grid-cols-1 xl:grid-cols-[1fr,25rem] gap-4">
+        <!-- Recent Bookings Section -->
+        <div class="bg-white rounded-lg shadow-lg">
+            <div class="p-4">
+                <h2 class="text-xl font-semibold mb-4">Recent Bookings</h2>
+                
+                <div class="overflow-x-auto">
+                    <table class="w-full">
+                        <thead class="bg-gray-50">
+                            <tr>
+                                <th class="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Booking Token</th>
+                                <th class="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Court</th>
+                                <th class="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Customers</th>
+                                <th class="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Time</th>
+                                <th class="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Date</th>
+                                <th class="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Status</th>
+                                <th class="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody class="bg-white divide-y divide-gray-200">
+                            {% for booking in bookings %}
+                            <tr class="hover:bg-gray-50 transition-colors">
+                                <td class="px-4 py-3 whitespace-nowrap">{{ booking.token }}</td>
+                                <td class="px-4 py-3 whitespace-nowrap">{{ booking.court_name }}</td>
+                                <td class="px-4 py-3 whitespace-nowrap">{{ booking.username }}</td>
+                                <td class="px-4 py-3 whitespace-nowrap">{{ booking.time }} PM</td>
+                                <td class="px-4 py-3 whitespace-nowrap">{{ booking.date }}</td>
+                                <td class="px-4 py-3 whitespace-nowrap">
+                                    <span class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full 
+                                        {% if booking.status == 'Active' %}bg-green-100 text-green-800
+                                        {% elif booking.status == 'Pending' %}bg-yellow-100 text-yellow-800
+                                        {% else %}bg-red-100 text-red-800{% endif %}">
+                                        {{ booking.status }}
+                                    </span>
+                                </td>
+                                <td class="px-4 py-3 whitespace-nowrap">
+                                    <button class="text-indigo-600 hover:text-indigo-900">Details</button>
+                                </td>
+                            </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+                
+                <a href="#" class="block mt-4 text-center text-indigo-600 hover:text-indigo-900">Show All</a>
+            </div>
         </div>
 
-        <div class="booking-details-info">
-            <h2>Customer - Mike</h2>
-            <div class="customer-details">
-                <form action="#" method="POST">
-                    {% for detail in bookings %}
-                    <input type="text" value='{{ detail.username }}'>
-                    <input type="text" value='{{ detail.token }}'>
-                    <input type="text" value='{{ detail.time }}'>
-                    <input type="text" value='{{ detail.date }}'>
-                    <input type="text" value='{{ detail.status }}'>
-                    <input type="text" value='{{ detail.payment }}'>
-                    <input type="text" value='{{ detail.is_checked }}'>
-                    {% endfor %}
-                    <a href="#" class="submit-btn">Submit</a>
-                </form>
-            </div>
+        <!-- Customer Details Section -->
+        <div class="bg-white rounded-lg shadow-lg p-4">
+            <h2 class="text-xl font-semibold mb-6">Customer - Mike</h2>
+            
+            <form class="space-y-4">
+                <div class="space-y-4">
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700">Name</label>
+                        <input type="text" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500">
+                    </div>
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700">Email</label>
+                        <input type="email" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500">
+                    </div>
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700">Phone</label>
+                        <input type="tel" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500">
+                    </div>
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700">Address</label>
+                        <input type="text" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500">
+                    </div>
+                </div>
+                
+                <button type="submit" class="w-full bg-indigo-600 text-white py-2 px-4 rounded-md hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 transition-colors">
+                    Submit
+                </button>
+            </form>
         </div>
     </div>
 </div>
-
-
 {% endblock %}

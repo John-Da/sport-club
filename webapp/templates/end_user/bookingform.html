@@ -8,42 +8,41 @@
         <p class="confirmBooking-header-title">Confirm</p>
     </header>
 
-    <div class="bookingform_container">
-        <form action="#">
-            <div class="formItems">
-                <label for="court">Court name</label>
-                <input id="court" type="text" name="court" placeholder="Enter court name">
+    {% include 'end_user/alertMsg.html' %}
+
+    <div class="flex flex-col items-center justify-start gap-4 w-full min-h-screen bg-gray-100">
+        <form method="POST" action="{{ url_for('user.book_court') }}" class="w-full p-4 bg-white rounded-lg shadow-md flex flex-col gap-6">
+            <input type="hidden" name="court_id" value="{{ court_id }}">
+            
+            <div class="flex flex-col items-start">
+                <label class="text-lg font-semibold text-gray-700">Court name</label>
+                <input type="text" name="court_name" value="{{ court_name }}" readonly class="w-full p-2 border border-gray-300 rounded-md focus:border-blue-500 focus:outline-none">
             </div>
-            <div class="formItems">
-                <label for="duration">Duration</label>
-                <input id="duration" type="text" name="duration" placeholder="Enter duration">
+            
+            <div class="flex flex-col items-start">
+                <label class="text-lg font-semibold text-gray-700">Duration</label>
+                <input type="text" name="duration" value="{{ duration }}" readonly class="w-full p-2 border border-gray-300 rounded-md focus:border-blue-500 focus:outline-none">
             </div>
-            <div class="formItems">
-                <label for="time">Time</label>
-                <input id="time" type="time" name="time">
+            
+            <div class="flex flex-col items-start">
+                <label class="text-lg font-semibold text-gray-700">Time</label>
+                <input type="text" name="time" value="{{ time }}" readonly class="w-full p-2 border border-gray-300 rounded-md focus:border-blue-500 focus:outline-none">
             </div>
-            <div class="formItems">
-                <label for="date">Date</label>
-                <input id="date" type="date" name="date">
+            
+            <div class="flex flex-col items-start">
+                <label class="text-lg font-semibold text-gray-700">Date</label>
+                <input type="text" name="date" value="{{ date }}" readonly class="w-full p-2 border border-gray-300 rounded-md focus:border-blue-500 focus:outline-none">
             </div>
-            <div class="formItems">
-                <label for="price">Price</label>
-                <input id="price" type="text" name="price" placeholder="Enter price">
+            
+            <div class="flex flex-col items-start">
+                <label class="text-lg font-semibold text-gray-700">Price</label>
+                <input type="text" name="price" value="{{ price }}" readonly class="w-full p-2 border border-gray-300 rounded-md focus:border-blue-500 focus:outline-none">
             </div>
-            <div class="formItems">
-                <label for="payment">Payment Method</label>
-                <select id="payment">
-                    <option value="SCB">SCB</option>
-                    <option value="K+">K+</option>
-                    <option value="Kasicon">Kasicon</option>
-                    <option value="BangKok Saving">BangKok Saving</option>
-                </select>
+            
+            <div class="flex justify-between items-center mt-4">
+                <a href="{{ url_for('user.bookings') }}" class="text-center w-2/5 p-3 bg-red-500 text-white font-semibold rounded-md hover:bg-red-600 transition-colors">Cancel</a>
+                <button type="submit" class="w-2/5 p-3 bg-blue-500 text-white font-semibold rounded-md hover:bg-blue-600 transition-colors">Confirm</button>
             </div>
         </form>
-        <div class="formbtn">
-            <button class="formCancel">Cancel</button>
-            <button class="formConfirm">Confirm</button>
-        </div>
     </div>    
-    
 {% endblock %}

@@ -1,4 +1,3 @@
-
 /* ----------------------------- PROFILE --------------------------- */
 .profile-header {
     background-color: var(--primary-color);
@@ -6,7 +5,6 @@
     justify-content: space-between;
     align-items: center;
     padding: 1rem;
-    margin: 0;
 }
 
 .header-back-btn {
@@ -15,73 +13,64 @@
     color: white;
     font-size: 1.5rem;
     cursor: pointer;
-    width: 2rem;
 }
 
-.profile-header-title{
-    text-align: left;
-    width: 70%;
+.profile-header-title {
     font-size: 1.5rem;
     font-weight: 800;
     color: #fff;
 }
 
-.profile-content{
+.profile-content {
     background-color: #fff;
     width: 100%;
-    height: 100vh;
-    display: grid;
-    grid-template-rows: 12rem 1fr;
-    gap: 3px;
+    height: 90vh; /* Change to auto for better adaptability */
+    display: flex;
+    flex-direction: column;
+    padding: 1rem;
+    gap: 10px; /* Add gap for better spacing */
 }
 
 .profile-status-info {
-    border: none;
     box-shadow: 0 3px 8px var(--shadow-color);
     padding: 1rem;
     border-radius: 15px;
-    
-    height: 7rem;
-
-    display: grid;
-    grid-template-columns: 80px 1fr;
-    gap: 20px;
-
     background-color: var(--primary-color);
+    display: flex;
     align-items: center;
-    margin: auto;
 }
 
-.profile-status-info img{
-    max-width: 100%;
-    height: auto;
+.profile-status-info img {
+    width: 60px; /* Ensure the image has a fixed size */
+    height: 60px; /* Ensure the image has a fixed size */
     border-radius: 50%;
+    object-fit: cover; /* Maintain image aspect ratio */
 }
 
 .general-info h1,
 .general-info p {
     color: #fff;
+    margin-left: 15px; /* Add margin for better spacing */
 }
 
 .app-settings {
     width: 100%;
-    height: 100%;
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
+    flex-grow: 1; /* Allow this section to take up remaining space */
+    justify-content: space-between; /* Align content to the top */
 }
 
-.individual-settings{
-    display: grid;
-    grid-template-rows: repeat(4, 1fr);
+.individual-settings {
+    display: flex;
+    flex-direction: column;
     margin-top: 0.5rem;
-    margin-bottom: 6rem;
 }
 
-.settingsBtn{
+.settingsBtn {
     border: none;
     border-bottom: 1px solid var(--border-color);
-    font-size: 20px;
+    font-size: 18px; /* Slightly smaller font size */
     font-weight: 600;
     text-align: left;
     background-color: #fff;
@@ -90,33 +79,31 @@
     transition: background-color 0.15s ease, color 0.15s ease;
 }
 
-.settingsBtn:hover{
+.settingsBtn:hover {
     background-color: var(--light-text-color);
     color: #fff;
 }
 
-.logout-box{
-    width: 100%;
-    height: 100%;
-    align-content: center;
+.logout-box {
+    margin: auto 0; /* Move logout box to the bottom */
     text-align: center;
 }
 
-.logout-box .logoutBtn{
+.logout-box .logoutBtn {
     text-decoration: none;
     color: var(--primary-color);
     border: none;
     cursor: pointer;
-    padding: 1rem 6rem;
+    padding: 1rem 3rem; /* Adjust padding for better spacing */
     border-radius: 8px;
-    font-size: 1.1rem;
+    font-size: 1rem; /* Adjust font size */
     font-weight: 800;
     letter-spacing: 0.8px;
     background-color: transparent;
-    transition: all 0.3s ease;
+    transition: background-color 0.3s ease;
 }
 
-.logout-box .logoutBtn:hover{
+.logout-box .logoutBtn:hover {
     background-color: var(--primary-color);
     color: #fff;
 }

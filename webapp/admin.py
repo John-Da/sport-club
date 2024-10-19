@@ -1,6 +1,6 @@
 from flask import Blueprint, render_template, flash, redirect, url_for, request, current_app
 from flask_login import login_required, current_user, logout_user
-from .models import Court, db, Customer, Booking
+from .models import Court, Rules, db, Customer, Booking
 from .forms import PromoteForm
 from datetime import datetime
 
@@ -47,33 +47,54 @@ def check_in():
 
     return redirect(url_for("admin.dashboard"))
 
-
 @admin.route('/courts', methods=['GET', 'POST'])
 def manage_courts():
     if request.method == 'POST':
-        court_name = request.form['court_name']
-        date_str = request.form['date']
-        time = request.form['time']
-        duration = int(request.form['duration'])
-        current_price = float(request.form['current_price'])
-        previous_price = float(request.form.get('previous_price', 0))
+        # Check if court data is being added
+        if 'court_name' in request.form:
+            court_name = request.form['court_name']
+            date_str = request.form['date']
+            time_str = request.form['time']
+            duration = int(request.form['duration'])
+            current_price = float(request.form['current_price'])
+            previous_price = float(request.form.get('previous_price', 0))
 
+            new_court = Court(
+                court_name=court_name,
+                date=date_str,
+                time=time_str,
+                duration=duration,
+                current_price=current_price,
+                previous_price=previous_price
+            )
 
-        new_court = Court(court_name=court_name, date=date_str, time=time,
-                          duration=duration, current_price=current_price, previous_price=previous_price)
-        print(new_court)
-        try:
-            db.session.add(new_court)
-            db.session.commit()
-            flash('Court added successfully', 'success')
-        except Exception as e:
-            db.session.rollback()
-            current_app.logger.error(f"Database error: {str(e)}")
-            flash(f"Error adding court: {str(e)}", 'error')
-            return redirect(url_for('admin.manage_courts'))
+            try:
+                db.session.add(new_court)
+                db.session.commit()
+                flash('Court added successfully', 'success')
+            except Exception as e:
+                db.session.rollback()
+                current_app.logger.error(f"Database error while adding court: {str(e)}")
+                flash(f"Error adding court: {str(e)}", 'error')
 
+        # Check if rule data is being added
+        if 'rule_description' in request.form:
+            rule_description = request.form['rule_description']
+            new_rule = Rules(rule_description=rule_description)  # Assuming your Rule model has a description field
+            
+            try:
+                db.session.add(new_rule)
+                db.session.commit()
+                flash('Rule added successfully', 'success')
+            except Exception as e:
+                db.session.rollback()
+                current_app.logger.error(f"Database error while adding rule: {str(e)}")
+                flash(f"Error adding rule: {str(e)}", 'error')
+
+    # Fetch all courts for display
     courts = Court.query.all()
     return render_template('admin/manage_courts.html', courts=courts)
+
 
 @admin.route('/edit_court/<int:id>', methods=['GET', 'POST'])
 def edit_court(id):

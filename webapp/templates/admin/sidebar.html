@@ -1,50 +1,65 @@
+<aside class="h-screen bg-white shadow-lg w-64 transition-all duration-300 ease-in-out" id="sidebar">
+    <!-- Logo Section -->
+    <div class="flex items-center justify-between px-4 py-6 border-b">
+        <div class="flex items-center">
+            <h2 class="text-2xl font-bold whitespace-nowrap">
+                PETAN<span class="text-crimson font-script">Q</span>
+            </h2>
+        </div>
+        <button class="p-1 hover:bg-gray-100 rounded-lg transition-colors" id="toggleSidebar">
+            <span class="material-symbols-rounded" id="toggleIcon">keyboard_double_arrow_left</span>
+        </button>
+    </div>
 
-<div class="sidemenubar">
-    <div class="top">
-        <div class="logo">
-            <h2>PETAN<span style="color: crimson; font-family: 'Script';">Q</span></h2>
+    <!-- Navigation Links -->
+    <nav class="py-4">
+        <div class="space-y-1 px-2">
+            <a href="/admin/dashboard" class="flex items-center px-4 py-3 text-gray-700 hover:bg-indigo-50 hover:text-indigo-600 rounded-lg transition-colors group">
+                <span class="material-symbols-rounded mr-3">space_dashboard</span>
+                <span class="nav-text whitespace-nowrap font-medium">Dashboard</span>
+            </a>
+
+            <a href="/admin/bookings" class="flex items-center px-4 py-3 text-gray-700 hover:bg-indigo-50 hover:text-indigo-600 rounded-lg transition-colors group">
+                <span class="material-symbols-rounded mr-3">receipt_long</span>
+                <span class="nav-text whitespace-nowrap font-medium">Bookings</span>
+            </a>
+
+            <a href="/admin/customers" class="flex items-center px-4 py-3 text-gray-700 hover:bg-indigo-50 hover:text-indigo-600 rounded-lg transition-colors group">
+                <span class="material-symbols-rounded mr-3">groups</span>
+                <span class="nav-text whitespace-nowrap font-medium">Customers</span>
+            </a>
+
+            <a href="/admin/analytics" class="flex items-center px-4 py-3 text-gray-700 hover:bg-indigo-50 hover:text-indigo-600 rounded-lg transition-colors group">
+                <span class="material-symbols-rounded mr-3">show_chart</span>
+                <span class="nav-text whitespace-nowrap font-medium">Analytics</span>
+            </a>
+
+            <a href="/admin/messages" class="flex items-center px-4 py-3 text-gray-700 hover:bg-indigo-50 hover:text-indigo-600 rounded-lg transition-colors group">
+                <span class="material-symbols-rounded mr-3">mail</span>
+                <span class="nav-text whitespace-nowrap font-medium">Messages</span>
+            </a>
+
+            <a href="/admin/courts" class="flex items-center px-4 py-3 text-gray-700 hover:bg-indigo-50 hover:text-indigo-600 rounded-lg transition-colors group">
+                <span class="material-symbols-rounded mr-3">flag_2</span>
+                <span class="nav-text whitespace-nowrap font-medium">Courts</span>
+            </a>
+
+            <a href="/admin/reports" class="flex items-center px-4 py-3 text-gray-700 hover:bg-indigo-50 hover:text-indigo-600 rounded-lg transition-colors group">
+                <span class="material-symbols-rounded mr-3">report</span>
+                <span class="nav-text whitespace-nowrap font-medium">Reports</span>
+            </a>
+
+            <a href="/admin/settings" class="flex items-center px-4 py-3 text-gray-700 hover:bg-indigo-50 hover:text-indigo-600 rounded-lg transition-colors group">
+                <span class="material-symbols-rounded mr-3">settings</span>
+                <span class="nav-text whitespace-nowrap font-medium">Settings</span>
+            </a>
+
+            <div class="pt-4 mt-4 border-t">
+                <a href="/admin/logout" class="flex items-center px-4 py-3 text-red-600 hover:bg-red-50 rounded-lg transition-colors group">
+                    <span class="material-symbols-rounded mr-3">logout</span>
+                    <span class="nav-text whitespace-nowrap font-medium">Logout</span>
+                </a>
+            </div>
         </div>
-        <div class="clOp" style="display: none;">
-            <span class="material-symbols-rounded">keyboard_double_arrow_left</span>
-        </div>
-    </div>
-    <div class="navbar">
-        <a href="/admin/dashboard" class=".nav-item" data-section="dashboard">
-            <span class="material-symbols-rounded">space_dashboard</span>
-            <h3>Dashboard</h3>
-        </a>
-        <a href="/admin/bookings" class=".nav-item" data-section="bookings">
-            <span class="material-symbols-rounded">receipt_long</span>
-            <h3>Bookings</h3>
-        </a>
-        <a href="/admin/customers" class=".nav-item" data-section="customers">
-            <span class="material-symbols-rounded">groups</span>
-            <h3>Customers</h3>
-        </a>
-        <a href="/admin/analytics" class=".nav-item" data-section="analytics">
-            <span class="material-symbols-rounded">show_chart</span>
-            <h3>Analytics</h3>
-        </a>
-        <a href="/admin/messages" class=".nav-item" data-section="messages">
-            <span class="material-symbols-rounded">mail</span>
-            <h3>Messages</h3>
-            <!-- <span class="message-count">26</span> -->
-        </a>
-        <a href="/admin/courts" class=".nav-item" data-section="courts">
-            <span class="material-symbols-rounded">flag_2</span>
-            <h3>Courts</h3>
-        </a>
-        <a href="/admin/reports" class=".nav-item" data-section="reports">
-            <span class="material-symbols-rounded">report</span>
-            <h3>Reports</h3>
-        </a>
-        <a href="/admin/settings" class=".nav-item" data-section="settings">
-            <span class="material-symbols-rounded">settings</span>
-            <h3>Settings</h3>
-        </a>
-        <a href="/admin/logout" class=".nav-item" data-section="logout">
-            <span class="material-symbols-rounded">logout</span>
-            <h3>Logout</h3>
-        </a>
-    </div>
-</div>
+    </nav>
+</aside>

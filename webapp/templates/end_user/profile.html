@@ -4,7 +4,9 @@
 
 {% block content %}
     <header class="profile-header">
-        <button class="header-back-btn" aria-label="Go back"><i class="fas fa-chevron-left"></i></button>
+        <button class="header-back-btn" aria-label="Go back">
+            <i class="fas fa-chevron-left"></i>
+        </button>
         <p class="profile-header-title">Profile Status</p>
     </header>
 
@@ -12,12 +14,13 @@
 
     <div class="profile-content">
         <div class="profile-status-info">
-            <img src="../static/img/member-2.png" alt="profile">
+            <img src="../static/img/member-2.png" alt="profile" class="profile-image">
             <div class="general-info">
                 <h1>Joshua Adam</h1>
                 <p>08347563554</p>
             </div>
         </div>
+        
         <div class="app-settings">
             <div class="individual-settings">
                 <button class="settingsBtn">Account</button>
@@ -30,5 +33,4 @@
             </div>
         </div>
     </div>
-
 {% endblock %}
