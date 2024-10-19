@@ -3,8 +3,71 @@
 {% block title %} Admin Dashboard {% endblock %}
 {% block content %}
 
-    <div id="dashboard" class="section">
-        <h1>This is a Dashboard Section</h1>
+<div id="dashboard" class="section py-8 max-w-7xl mx-auto">
+    <h1 class="text-3xl font-bold text-gray-900 dark:text-[#2c3e50] mb-8">Dashboard Overview</h1>
+
+    <!-- Courts Section -->
+    <div class="recent-courtAdded w-full overflow-x-auto bg-white dark:bg-gray-800 rounded-lg shadow-lg p-6 mb-8">
+        <h2 class="text-2xl font-semibold text-gray-800 dark:text-gray-100 mb-4">Courts</h2>
+        <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400 text-center">
+            <thead class="text-xs text-gray-700 uppercase bg-gray-100 dark:bg-gray-700 dark:text-gray-400">
+                <tr class="bg-[#3498db] text-white">
+                    <th class="px-6 py-4">Court</th>
+                    <th scope="col" class="px-6 py-4">Price</th>
+                    <th class="px-6 py-4">Time</th>
+                    <th scope="col" class="px-6 py-4">Date</th>
+                    <th class="px-6 py-4">Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for court in courts %}
+                <tr class="border-b dark:border-gray-700 hover:bg-gray-100 dark:hover:bg-gray-700 text-gray-800 dark:text-gray-100">
+                    <td scope="row" class="px-6 py-4">{{ court.court_name }}</td>
+                    <td class="px-6 py-4">{{ court.current_price }}</td>
+                    <td class="px-6 py-4">{{ court.time }}</td>
+                    <td class="px-6 py-4">{{ court.date }}</td>
+                    <td class="px-6 py-4 flex justify-around">
+                        <a href="#" class="text-blue-600 dark:text-blue-400 hover:underline">Edit</a>
+                        <a href="#" class="text-blue-600 dark:text-blue-400 hover:underline">Details</a>
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
     </div>
-    
+
+    <!-- Users Section -->
+    <div class="recent-users w-full overflow-x-auto bg-white dark:bg-gray-800 rounded-lg shadow-lg p-6">
+        <h2 class="text-2xl font-semibold text-gray-800 dark:text-gray-100 mb-4">Users</h2>
+        <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400 text-center">
+            <thead class="text-xs text-gray-700 uppercase bg-gray-100 dark:bg-gray-700 dark:text-gray-400">
+                <tr class="bg-[#3498db] text-white">
+                    <th class="px-6 py-4">Username</th>
+                    <th scope="col" class="px-6 py-4">Email</th>
+                    <th class="px-6 py-4">Role</th>
+                    <th scope="col" class="px-6 py-4">Date Joined</th>
+                    <th class="px-6 py-4">Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for user in customers %}
+                    {% if user.role != 'admin' %}
+                        <tr class="border-b dark:border-gray-700 hover:bg-gray-100 dark:hover:bg-gray-700 text-gray-800 dark:text-gray-100">
+                            <td scope="row" class="px-6 py-4">{{ user.username }}</td>
+                            <td class="px-6 py-4">{{ user.email }}</td>
+                            <td class="px-6 py-4">{{ user.role }}</td>
+                            <td class="px-6 py-4">{{ user.date_joined.strftime('%Y-%m-%d') }}</td>
+                            <td class="px-6 py-4 flex justify-around">
+                                <a href="#" class="text-blue-600 dark:text-blue-400 hover:underline">Edit</a>
+                                <a href="#" class="text-blue-600 dark:text-blue-400 hover:underline">Details</a>
+                            </td>
+                        </tr>
+                    {% endif %}
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+
+</div>
+
 {% endblock %}

@@ -13,7 +13,9 @@ def admin_dashboard():
     if current_user.role != "admin":
         flash("You are not authorized.", "error")
         return redirect(url_for("views.landingpage"))
-    return render_template("admin/admin_dashboard.html")
+    courts = Court.query.all()
+    users = Customer.query.all()
+    return render_template("admin/admin_dashboard.html", courts=courts, customers=users)
 
 
 @admin.route("/bookings")
@@ -63,11 +65,11 @@ def manage_courts():
         try:
             db.session.add(new_court)
             db.session.commit()
-            flash('Court added successfully')
+            flash('Court added successfully', 'success')
         except Exception as e:
             db.session.rollback()
             current_app.logger.error(f"Database error: {str(e)}")
-            flash(f"Error adding court: {str(e)}")
+            flash(f"Error adding court: {str(e)}", 'error')
             return redirect(url_for('admin.manage_courts'))
 
     courts = Court.query.all()
@@ -99,20 +101,33 @@ def manage_customers():
 
     users = Customer.query.all()
     form = PromoteForm()
+    
+    return render_template("admin/manage_customers.html", customers=users, form=form)
+
+@admin.route("/promote_user", methods=["POST"])
+@login_required
+def promote_user():
+    if current_user.role != "admin":
+        flash("You are not authorized.", "error")
+        return redirect(url_for("views.landingpage"))
+
+    form = PromoteForm()
+    
     if form.validate_on_submit():
         email = form.email.data
         user = Customer.query.filter_by(email=email).first()
 
         if not user:
             flash("User not found.", "error")
-            return redirect(url_for("admin.admin_dashboard"))
+            return redirect(url_for("admin.manage_customers"))
 
+        # Promote user to admin
         user.role = "admin"
         db.session.commit()
         flash(f"{user.username} has been promoted to admin.", "success")
-        return redirect(url_for("admin.admin_dashboard"))
+        return redirect(url_for("admin.manage_customers"))
 
-    return render_template("admin/manage_customers.html", customers=users, form=form)
+    return redirect(url_for("admin.manage_customers"))
 
 
 @admin.route("/analytics")
@@ -157,26 +172,3 @@ def logout():
     logout_user()
     return redirect("/landingpage")
 
-
-@admin.route("/promote", methods=["GET", "POST"])
-@login_required
-def promote_user():
-    if current_user.role != "admin":
-        flash("You are not authorized to perform this action.", "error")
-        return redirect(url_for("views.landingpage"))
-
-    form = PromoteForm()
-    if form.validate_on_submit():
-        email = form.email.data
-        user = Customer.query.filter_by(email=email).first()
-
-        if not user:
-            flash("User not found.", "error")
-            return redirect(url_for("admin.admin_dashboard"))
-
-        user.role = "admin"
-        db.session.commit()
-        flash(f"{user.username} has been promoted to admin.", "success")
-        return redirect(url_for("admin.admin_dashboard"))
-
-    return render_template("admin/promote_user.html", form=form)

@@ -90,6 +90,22 @@ img{
     width: 100%;
 }
 
+.primary{
+    color: var(--primary-color);
+}
+
+.danger{
+    color: var(--color-danger);
+}
+
+.warning{
+    color: var(--color-warning);
+}
+
+.success{
+    color: var(--color-success);
+}
+
 .profile-photo{
     width: 2.8rem;
     height: 2.8rem;
@@ -119,11 +135,14 @@ img{
     width: 250px;
     height: 100%;
     background-color: var(--primary-color);
-    padding: 1.4rem 0rem 1.4rem 1.4rem;
-    transition: width 0.3s ease;
-    width: 250px;
+    padding: 1.4rem 0 1.4rem 1.4rem;
     position: relative;
     overflow: hidden;
+    transition: width 0.3s ease;
+}
+
+.sidemenubar.sidebar-closed {
+    width: 60px; 
 }
 
 .sidemenubar .top {
@@ -135,45 +154,67 @@ img{
 
 .sidemenubar .top .logo {
     position: relative;
-    height: 60px; /* Adjust based on your logo size */
+    height: 60px; 
     padding: 10px;
     display: flex;
     align-items: center;
 }
 
-.sidemenubar .top .logo h2{
+.sidemenubar .top .logo h2 {
     font-weight: 800;
     color: var(--light-color);
     margin-left: 10px;
-    transition: opacity 0.3s ease;
+    position: absolute;
+    left: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    opacity: 1;
+    transition: opacity 0.3s ease, transform 0.3s ease;
 }
 
-.sidemenubar .top .clOp span{
+.sidebar-closed .top .logo h2 {
+    opacity: 0;
+    transform: translateY(-50%) translateX(-100%);
+    width: 0;
+    overflow: hidden;
+}
+
+.sidemenubar .top .clOp {
+    cursor: pointer;
+    position: absolute;
+    right: 10px;
+    top: 10px;
+    z-index: 10;
+    transition: transform 0.3s ease;
+}
+
+.clOp span {
     font-weight: 800;
     font-size: 2.1rem;
     color: var(--light-color);
 }
 
-.sidemenubar .top .clOp {
-    cursor: pointer;
+.clOp.rotate {
+    transform: rotate(180deg);
 }
 
-.sidemenubar .top .logo img{
-    width: 4rem;
-    height: 4rem;
-    display: none;
+.sidebar-closed .top .logo img {
+    display: block;
+    opacity: 1;
 }
 
-.sidemenubar .navbar{
+.sidemenubar .navbar {
     width: 100%;
     height: 90vh;
     display: flex;
     flex-direction: column;
     align-items: center;
     position: relative;
+    overflow: hidden;
+    transition: all 0.3s ease;
 }
 
-.sidemenubar .navbar a{
+.sidemenubar .navbar a {
     display: flex;
     align-items: center;
     gap: 1rem;
@@ -183,17 +224,39 @@ img{
     border-bottom-left-radius: 14px;
     color: var(--light-color);
     margin: 3px 0;
+    padding: 10px;
+    text-decoration: none;
+    transition: all 0.3s ease, transform 0.2s ease;
 }
 
-.sidemenubar .navbar a:last-child{
-    bottom: 2rem;
-    width: 100%;
-    position: absolute;
-}
-
-.sidemenubar .navbar a span{
+.sidemenubar .navbar a span {
     font-size: 1.6rem;
-    transition: all 300ms ease;
+    transition: all 0.3s ease;
+}
+
+.navbar-closed .navbar a span:not(.material-symbols-rounded) {
+    display: none;
+    margin-left: 0;
+}
+
+.navbar a:hover, .sidemenubar .navbar a.hover {
+    background-color: #fff;
+    color: var(--primary-color);
+    transform: translateY(-3px);
+}
+
+.navbar a:hover::before, .sidemenubar .navbar a.hover::before {
+    content: '';
+    width: 10px;
+    height: 100%;
+    background-color: var(--color-dark-varient);
+    border-top-left-radius: 20px;
+    border-bottom-left-radius: 20px;
+}
+
+.navbar a:hover span, .sidemenubar .navbar a.hover span {
+    color: var(--primary-color);
+    margin-left: calc(1rem - 3px);
 }
 
 .sidemenubar .navbar a.active {
@@ -215,87 +278,10 @@ img{
     margin-left: calc(1rem - 3px);
 }
 
-
-.sidemenubar.sidebar-closed {
-    width: 60px; /* adjust as needed */
-}
-
-.navbar {
-    overflow: hidden;
-    transition: all 0.3s ease;
-}
-
-.navbar-closed .navbar a span:not(.material-symbols-rounded) {
-    display: none;
-    margin-left: 0;
-}
-
-.logo h2 {
+.sidemenubar .navbar a:last-child {
     position: absolute;
-    left: 10px;
-    top: 50%;
-    transform: translateY(-50%);
-    transition: opacity 0.3s ease, transform 0.3s ease;
-}
-
-.logo h2 {
-    margin: 0;
-    opacity: 1;
-}
-
-.sidebar-closed .logo img {
-    opacity: 1;
-}
-
-.sidebar-closed .logo h2 {
-    opacity: 0;
-    transform: translateY(-50%) translateX(-100%);
-}
-
-.sidemenubar {
-    transition: width 0.3s ease;
-    width: 250px; /* adjust as needed */
-}
-
-.navbar {
-    transition: all 0.3s ease;
-}
-
-.navbar a {
-    transition: transform 0.2s ease;
-    display: block;
-    padding: 10px;
-    text-decoration: none;
-    color: #333; /* Adjust color as needed */
-}
-
-.navbar a:hover {
-    transform: translateY(-3px);
-    background-color: rgba(0, 0, 0, 0.05); /* Slight background change on hover */
-}
-
-.clOp {
-    cursor: pointer;
-    transition: transform 0.3s ease;
-    display: block; /* Ensure it's always visible */
-    position: absolute;
-    right: 10px;
-    top: 10px;
-    z-index: 10;
-}
-
-.clOp.rotate {
-    transform: rotate(180deg);
-}
-
-.sidemenubar.sidebar-closed {
-    width: 70px; /* adjust as needed */
-}
-
-.sidebar-closed .top .logo h2 {
-    opacity: 0;
-    width: 0;
-    overflow: hidden;
+    bottom: 2rem;
+    width: 100%;
 }
 
 .hidden {
@@ -306,46 +292,6 @@ img{
     display: block;
 }
 
-.sidemenubar .navbar a:hover {
-    background-color: #fff;
-    color: var(--primary-color);
-}
-
-.sidemenubar .navbar a:hover::before {
-    content: '';
-    width: 10px;
-    height: 100%;
-    background-color: var(--color-dark-varient);
-    border-top-left-radius: 20px;
-    border-bottom-left-radius: 20px;
-}
-
-.sidemenubar .navbar a:hover span {
-    color: var(--primary-color);
-    margin-left: calc(1rem - 3px);
-}
-
-/* JS hover effect */
-.sidemenubar .navbar a.hover {
-    background-color: #fff;
-    color: var(--primary-color);
-}
-
-.sidemenubar .navbar a.hover::before {
-    content: '';
-    width: 10px;
-    height: 100%;
-    background-color: var(--color-dark-varient);
-    border-top-left-radius: 20px;
-    border-bottom-left-radius: 20px;
-}
-
-.sidemenubar .navbar a.hover span {
-    color: var(--primary-color);
-    margin-left: calc(1rem - 3px);
-}
-
-
 
 /* _---------------------------- Contents Container -------------------------- */
 
@@ -354,6 +300,10 @@ img{
     height: 100vh;
 }
 
+/* _---------------------------- Dashboard Container -------------------------- */
+#dashboard {
+    padding: 1rem;
+}
 
 
 /* _---------------------------- Bookings Container -------------------------- */

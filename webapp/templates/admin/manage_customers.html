@@ -1,32 +1,36 @@
 {% extends 'admin/admin_base.html' %}
 
-
 {% block title %} Customers {% endblock %}
 {% block content %}
 
-<div id="customers" class="section">
-    <h1>This is a Customers Section</h1>
-    <div class="insights">
-        <div class="recent-booking">
-            <h2>Users:</h2>
-            <table>
-                <thead>
+<div id="customers" class="section max-w-7xl mx-auto p-6 bg-white rounded-lg">
+    <h1 class="text-3xl font-bold mb-6">Customers Section</h1>
+
+    <div class="insights grid grid-cols-1 lg:grid-cols-2 gap-8">
+        <!-- Users Table -->
+        <div class="recent-booking w-full">
+            <h2 class="text-2xl font-semibold mb-4">Users</h2>
+
+            <table class="min-w-full text-sm text-left text-gray-500 dark:text-gray-400">
+                <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
                     <tr>
-                        <th>Username</th>
-                        <th>Email</th>
-                        <th>Role</th>
-                        <th>Actions</th>
+                        <th class="px-6 py-3">Username</th>
+                        <th class="px-6 py-3">Email</th>
+                        <th class="px-6 py-3">Role</th>
+                        <th class="px-6 py-3">Actions</th>
                     </tr>
                 </thead>
                 <tbody>
                     {% for user in customers %}
-                    <tr>
-                        <td>{{ user.username }}</td>
-                        <td>{{ user.email }}</td>
-                        <td>{{ user.role }}</td>
-                        <td>
+                    <tr class="border-b">
+                        <td class="px-6 py-4">{{ user.username }}</td>
+                        <td class="px-6 py-4">{{ user.email }}</td>
+                        <td class="px-6 py-4">{{ user.role }}</td>
+                        <td class="px-6 py-4">
                             {% if user.role != 'admin' %}
-                            <a href="{{ url_for('admin.promote_user', user_id=user.id) }}">Promote to Admin</a>
+                            <span class="text-blue-600 hover:text-blue-900">Regular User</span>
+                            {% else %}
+                            <span class="text-green-600">Admin</span>
                             {% endif %}
                         </td>
                     </tr>
@@ -34,13 +38,21 @@
                 </tbody>
             </table>
         </div>
-        <div class="booking-details-info">
-            <h2>Promote User</h2>
-            <div class="customer-details">
-                <form method="POST">
+
+        <!-- Promote User Form -->
+        <div class="booking-details-info w-full">
+            <h2 class="text-2xl font-semibold mb-4">Promote User</h2>
+
+            <div class="customer-details bg-gray-100 dark:bg-gray-800 p-6 rounded-lg shadow-md">
+                <form action="{{ url_for('admin.promote_user') }}" method="POST" class="space-y-4">
                     {{ form.hidden_tag() }}
-                    <p>{{ form.email.label }} {{ form.email() }}</p>
-                    <p>{{ form.submit() }}</p>
+                    <div>
+                        <label for="email" class="block text-sm font-medium text-gray-700 dark:text-gray-300">{{ form.email.label }}</label>
+                        {{ form.email(class="mt-1 p-2 w-full border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:text-white") }}
+                    </div>
+                    <div>
+                        {{ form.submit(class="w-full py-2 px-4 bg-blue-500 text-white rounded-md hover:bg-blue-600 transition duration-150") }}
+                    </div>
                 </form>
             </div>
         </div>
