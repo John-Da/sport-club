@@ -3,6 +3,7 @@ from flask_login import login_required, current_user, logout_user
 from .models import Court, Rules, db, Customer, Booking
 from .forms import PromoteForm
 from datetime import datetime
+from sqlalchemy.orm import joinedload
 
 
 admin = Blueprint("admin", __name__)
@@ -24,7 +25,7 @@ def admin_bookings():
     if current_user.role != "admin":
         flash("You are not authorized.", "error")
         return redirect(url_for("views.landingpage"))
-    bookings = Booking.query.all()
+    bookings = Booking.query.options(joinedload(Booking.customer)).all()
     return render_template("admin/manage_booking.html", bookings=bookings)
 
 

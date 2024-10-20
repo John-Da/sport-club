@@ -9,7 +9,14 @@ from flask_mail import Message
 user = Blueprint("user", __name__)
 
 def generate_token():
-    return secrets.token_hex(8)
+    return str(secrets.randbelow(1000000)).zfill(6)
+
+def generate_unique_token():
+    while True:
+        token = generate_token()
+        existing_booking = Booking.query.filter_by(token=token).first()
+        if not existing_booking:
+            return token
 
 @user.route("/dashboard")
 @login_required
@@ -77,7 +84,7 @@ def book_court():
             return redirect(url_for("user.bookings"))
 
         try:
-            token = generate_token()
+            token = generate_unique_token()
             booking = Booking(
                 user_id=current_user.id,
                 court_name=court_name,
