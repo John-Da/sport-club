@@ -61,6 +61,6 @@ def create_app():
             new_admin = Customer(email=admin_email, username="admin", password=adminpass, role="admin")
             db.session.add(new_admin)
             db.session.commit()
-            flash('Admin account created.')
+            print('Admin account created.')
         
     return app
